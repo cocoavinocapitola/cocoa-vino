@@ -58,7 +58,8 @@ window.SITE = {
     { title: "The shop", text: "Every bottle is for sale. Walk in, grab one, walk out. No table needed." },
   ],
 
-  // Home: "Ask Rodney" section
+  // "Ask Rodney" section: not on the home page right now. To bring it back, add
+  // <section id="rodney" class="section rodney"><div class="coravin-inner reveal" id="rodney-inner"></div></section> to index.html.
   // Home: the press card under the Reserve pours. "listLine" is optional: leave it
   // null until it's confirmed that Cocoa Vino is on the Coravin Guide's 2025 list.
   press: {
@@ -78,7 +79,7 @@ window.SITE = {
   rodney: {
     kicker: "The wine and chocolate guy",
     title: "Ask Rodney what to pour",
-    body: "Rodney Wartzok is our sommelier, self-taught and allergic to the word \"curated.\" Tell him what you like and he'll pour something you haven't tried, then hand you the chocolate that goes with it.",
+    body: "Rodney Wartzok is our owner, self-taught and allergic to the word \"curated.\" Tell him what you like and he'll pour something you haven't tried, then hand you the chocolate that goes with it.",
     button: { text: "See the menu", href: "menu.html" },
     // To change the photo, replace images/rodney.jpg. If it is missing, the bar photo shows instead.
     image: "images/rodney.jpg",
