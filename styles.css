@@ -72,13 +72,13 @@ p { margin: 0 0 1em; }
 /* Hero: the navy room with the gold Cocoa Vino sign */
 /* Hero: the photo sits at a fixed size under the header, and the words always start
    below the gilded sign, so they never cover it on any screen size. */
-.hero { --nav: 108px; --w: min(80vw, 1200px); --photo: calc(var(--w) * .75);
+.hero { --nav: 108px; --w: min(80vw, 1200px); --photo: calc(var(--w) * .4696);
   position: relative; display: grid; place-items: start center; text-align: center; color: #fff;
-  padding: calc(var(--nav) + var(--photo) * .72) 1rem 4.5rem;
+  padding: calc(var(--nav) + var(--photo) + 2.2rem) 1rem 4.5rem;
   background:
-    linear-gradient(180deg, rgba(10, 15, 31, 0) 0, rgba(10, 15, 31, 0) calc(var(--nav) + var(--photo) * .6), #070b17 calc(var(--nav) + var(--photo) * .72)),
+    linear-gradient(180deg, rgba(7, 11, 23, 0) 0, rgba(7, 11, 23, 0) calc(var(--nav) + var(--photo) * .9), #070b17 calc(var(--nav) + var(--photo))),
     linear-gradient(90deg, #070b17 calc(50% - var(--w) / 2), rgba(7, 11, 23, 0) calc(50% - var(--w) / 2 + 140px), rgba(7, 11, 23, 0) calc(50% + var(--w) / 2 - 140px), #070b17 calc(50% + var(--w) / 2)),
-    url("images/interior.jpg") center var(--nav) / var(--w) auto no-repeat,
+    url("images/hero.jpg") center var(--nav) / var(--w) auto no-repeat,
     #070b17; }
 .hero-inner { position: relative; z-index: 1; max-width: 880px; }
 .hero h1 { font-size: clamp(2.2rem, 3.9vw, 3.5rem); text-shadow: 0 2px 30px rgba(0, 0, 0, .7); margin-bottom: .35em; }
