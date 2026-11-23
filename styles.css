@@ -75,8 +75,8 @@ p { margin: 0 0 1em; }
 /* Hero: the sign photo centered on top in its own box, words centered below,
    so the words can never sit on the photo. */
 .hero { position: relative; color: #fff; padding: 108px 5vw 4.5rem;
-  /* The same velvet blues as the dark menu sections */
-  background: radial-gradient(ellipse at 15% 0%, rgba(52, 72, 150, .35), transparent 55%), linear-gradient(160deg, #141d3a, #070b17); }
+  /* The velvet blues of the dark menu sections, centered so both sides match */
+  background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(52, 72, 150, .35), transparent 100%), linear-gradient(180deg, #141d3a, #070b17); }
 .hero-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1.4rem; justify-items: center; }
 .hero-inner { position: relative; z-index: 1; max-width: 880px; text-align: center; }
 .hero h1 { font-size: clamp(2.3rem, 3.8vw, 3.7rem); margin-bottom: .4em; text-wrap: balance; }
