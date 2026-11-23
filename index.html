@@ -22,7 +22,7 @@
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261124a">
+  <link rel="stylesheet" href="styles.css?v=20261124b">
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -75,6 +75,17 @@
       <p class="coravin-cred">Rated Exceptional by the <a href="https://guide.coravin.com/products/cocoa-vino" target="_blank" rel="noopener">Coravin Guide</a>: over 60 wines by the glass</p>
     </div>
   </div>
+</section>
+
+<!-- Six bottles pulled from the Reserve list in wine-list.js (items marked featured: true). No prices on the home page. -->
+<section id="reserve-pours" class="section section-dark reserve-pours">
+  <div class="section-head reveal">
+    <p class="coravin-kicker">From the Reserve list</p>
+    <h2>Bottles you'd never open. One glass at a time.</h2>
+    <p>Our rarest wines, every one of them poured by the glass. Try a glass tonight, take the bottle home if you fall for it.</p>
+  </div>
+  <ul class="reserve-grid reveal" id="reserve-grid"></ul>
+  <p class="center"><a class="btn btn-ghost" href="menu.html#reserve">See the full Reserve list</a></p>
 </section>
 
 <!-- Rodney: text and photo come from "rodney" in content.js -->
@@ -183,7 +194,8 @@
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261124a"></script>
-<script src="main.js?v=20261124a"></script>
+<script src="wine-list.js?v=20261124b"></script>
+<script src="content.js?v=20261124b"></script>
+<script src="main.js?v=20261124b"></script>
 </body>
 </html>

@@ -322,6 +322,16 @@ p { margin: 0 0 1em; }
 .coravin .coravin-cred { display: inline-block; margin: 1.6rem 0 0; padding: .45em 1.1em; border: 1px solid var(--gold); color: var(--gold-2); font: 500 .95rem var(--caps); letter-spacing: .12em; text-transform: uppercase; }
 .coravin-cred a { color: var(--gold-2); }
 
+/* Home: From the Reserve list */
+.reserve-pours .section-head .coravin-kicker { margin-bottom: .6rem; }
+.reserve-grid { list-style: none; padding: 0; margin: 0 auto 2.6rem; max-width: 1200px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.reserve-grid li { padding: 1.8rem; border: 1px solid var(--line-dark); border-top: 3px solid var(--gold); background: rgba(255, 255, 255, .02); }
+.reserve-grid h3 { font-size: 1.5rem; margin: 0 0 .4rem; }
+.reserve-grid p { margin: 0; color: rgba(248, 241, 231, .72); }
+.reserve-grid .reserve-local { margin-top: .5rem; color: var(--gold-2); font-weight: 500; }
+@media (max-width: 1000px) { .reserve-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 800px) { .reserve-grid { grid-template-columns: 1fr; } }
+
 /* Ask Rodney (light section, photo on the right) */
 .rodney .coravin-kicker { color: #7d5a1e; }
 .rodney h2::after { content: ""; display: block; width: 64px; height: 3px; margin-top: 1.1rem; background: linear-gradient(90deg, var(--gold), var(--gold-2)); }

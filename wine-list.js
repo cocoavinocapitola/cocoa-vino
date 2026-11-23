@@ -2,6 +2,8 @@
 // THE WINE LIST (Menu page). From the printed menu and Reserve card.
 // Each wine: { name, note, glass, bottle }. note = region, style or vintage.
 // Prices are numbers as printed (glass | bottle). Leave "" if not offered.
+// featured: true on a Reserve item puts it in the home page "From the Reserve list" grid (six shown).
+// homeNote: an optional extra line shown under it on the home page.
 // To add a wine, copy a line and change it. To remove one, delete the line.
 // ─────────────────────────────────────────────────────────────
 
@@ -9,7 +11,7 @@ window.WINE_LIST = [
   { id: "reserve", title: "The Reserve List", intro: "Our rarest bottles, and every one of them by the glass. Try a pour of Kosta Browne or Ridge Monte Bello without committing to the bottle.", groups: [
     { name: "Champagne & Sparkling", subs: [
       { name: "", items: [
-        { name: "Piper-Heidsieck Rare Millésime", note: "Champagne, Brut", glass: "70", bottle: "275" },
+        { name: "Piper-Heidsieck Rare Millésime", note: "Champagne, Brut", glass: "70", bottle: "275", featured: true },
         { name: "Billecart-Salmon Le Rosé", note: "Champagne, Brut", glass: "75", bottle: "225" },
         { name: "Côte Premier Cru Champagne", note: "Champagne, Millésime, 2010", glass: "82", bottle: "327" },
         { name: "Billecart-Salmon Rosé Vintage", note: "Champagne, Brut, 2015", glass: "99", bottle: "297" },
@@ -30,19 +32,19 @@ window.WINE_LIST = [
         { name: "M by Michael Mondavi", note: "Cabernet Sauvignon, Napa Valley, 2022", glass: "80", bottle: "240" },
         { name: "Daou Soul of a Lion Cabernet Sauvignon", note: "Paso Robles, 2021", glass: "80", bottle: "315" },
         { name: "Patrimony Cabernet Sauvignon", note: "Paso Robles, 2021", glass: "116", bottle: "465" },
-        { name: "Chappellet Cabernet Sauvignon “Pritchard Hill”", note: "Napa Valley, 2023", glass: "176", bottle: "705" },
+        { name: "Chappellet Cabernet Sauvignon “Pritchard Hill”", note: "Napa Valley, 2023", glass: "176", bottle: "705", featured: true },
         { name: "Pahlmeyer Red", note: "Red blend, Napa, 2022", glass: "75", bottle: "300" },
-        { name: "Quintessa", note: "Red blend, Rutherford, Napa Valley, 2023", glass: "140", bottle: "560" },
-        { name: "Ridge Monte Bello", note: "Santa Cruz Mountains, 2022", glass: "168", bottle: "675" },
+        { name: "Quintessa", note: "Red blend, Rutherford, Napa Valley, 2023", glass: "140", bottle: "560", featured: true },
+        { name: "Ridge Monte Bello", note: "Santa Cruz Mountains, 2022", glass: "168", bottle: "675", featured: true, homeNote: "Santa Cruz Mountains, 20 minutes from this bar." },
         { name: "Bibi Graetz Testamatta Rosso", note: "Toscana, 2020", glass: "81", bottle: "243" },
         { name: "Chapoutier Hermitage La Sizeranne", note: "Rhône, 2020", glass: "120", bottle: "360" },
-        { name: "Bruno Giacosa Barolo", note: "Piedmont, 2020", glass: "192", bottle: "576" },
+        { name: "Bruno Giacosa Barolo", note: "Piedmont, 2020", glass: "192", bottle: "576", featured: true },
       ] },
     ] },
     { name: "Dessert", subs: [
       { name: "", items: [
         { name: "Graham's 50 Year Tawny Port", note: "Portugal", glass: "100", bottle: "800" },
-        { name: "Royal Tokaji Essencia", note: "Hungary, 2016, 1 oz. pour", glass: "180", bottle: "1720" },
+        { name: "Royal Tokaji Essencia", note: "Hungary, 2016, 1 oz. pour", glass: "180", bottle: "1720", featured: true },
       ] },
     ] },
   ] },

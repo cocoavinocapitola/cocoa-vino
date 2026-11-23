@@ -123,6 +123,18 @@
     }
   }
 
+  // Home: six Reserve bottles, from the Reserve list in wine-list.js. Items marked
+  // featured: true come first (in list order); if fewer than six, fill from the top.
+  const reserveGrid = $("#reserve-grid");
+  if (reserveGrid && window.WINE_LIST) {
+    const sec = window.WINE_LIST.find((s) => s.id === "reserve");
+    const all = sec ? sec.groups.flatMap((g) => g.subs.flatMap((s) => s.items)) : [];
+    const picks = all.filter((w) => w.featured).slice(0, 6);
+    for (const w of all) { if (picks.length >= 6) break; if (!picks.includes(w)) picks.push(w); }
+    reserveGrid.innerHTML = picks.map((w) => `
+      <li><h3>${esc(w.name)}</h3>${w.note ? `<p>${esc(w.note)}</p>` : ""}${w.homeNote ? `<p class="reserve-local">${esc(w.homeNote)}</p>` : ""}</li>`).join("");
+  }
+
   // Home: "Ask Rodney" section, from S.rodney. Until images/rodney.jpg exists,
   // fall back to the bar photo so the page never shows a broken image.
   const rodney = $("#rodney-inner");
