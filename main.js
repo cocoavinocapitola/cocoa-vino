@@ -141,7 +141,7 @@
     const p = S.press, u = safeUrl(p.url), l = p.listLine, lu = l && safeUrl(l.url);
     press.innerHTML = `
       <a class="press-main" href="${esc(u || "#")}" target="_blank" rel="noopener">
-        ${p.badge ? `<img class="press-badge" src="${esc(p.badge)}" alt="${esc(p.badgeAlt || "")}" width="160" height="160" loading="lazy">` : ""}
+        ${p.badge ? `<img class="press-badge" src="${esc(p.badge)}" alt="${esc(p.badgeAlt || "")}" width="160" height="160">` : ""}
         <p class="press-quote">${esc(p.quote)}</p>
         <p class="press-source">${esc(p.source)}</p>
         ${p.linkText && u ? `<span class="press-link">${esc(p.linkText)}</span>` : ""}
