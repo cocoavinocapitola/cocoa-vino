@@ -238,6 +238,14 @@ p { margin: 0 0 1em; }
 .visit-cta .btn:last-child { grid-column: 1 / -1; }
 .visit-cta:has(> [hidden]) .btn:last-child { grid-column: auto; }
 @media (max-width: 520px) { .visit-cta { grid-template-columns: 1fr; } .visit-cta .btn:last-child { grid-column: auto; } }
+/* Private events: list on top, a patio photo filling the rest, so both columns
+   start and end together beside the form */
+.pe-photo { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid rgba(201, 163, 92, .5); border-radius: 2px; margin-top: 1.5rem; }
+@media (min-width: 801px) {
+  .pe-split { align-items: stretch; }
+  .pe-side { display: flex; flex-direction: column; }
+  .pe-side .pe-photo { flex: 1 1 0; min-height: 220px; aspect-ratio: auto; }
+}
 /* Contact: the note form stretches so both columns end on the same line */
 @media (min-width: 801px) { .contact-split { align-items: stretch; } }
 /* Visit: the map sits at the top beside Hours and stays in view while you scroll */

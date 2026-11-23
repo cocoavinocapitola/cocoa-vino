@@ -22,7 +22,7 @@
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261124v">
+  <link rel="stylesheet" href="styles.css?v=20261124w">
 </head>
 <body data-page="private-events">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -52,8 +52,8 @@
 </section>
 
 <section class="section">
-  <div class="split">
-    <div>
+  <div class="split pe-split">
+    <div class="pe-side">
       <h2>Ways to book</h2>
       <ul class="perks">
         <li><strong>The patio.</strong> The fire pits and the benches around them, for a party in the open air.</li>
@@ -62,12 +62,15 @@
         <li><strong>Corporate & team nights.</strong> A paint party or a trivia round of your own.</li>
       </ul>
       <p>Prefer to talk? <a data-phone data-phone-text hidden></a></p>
+      <img class="pe-photo" src="images/patio-golden.jpg" alt="The Cocoa Vino patio in the golden hour, with the fire pit and benches" loading="lazy">
     </div>
     <form class="event-form" id="event-form" novalidate>
       <h2>Request a date</h2>
       <label>Your name<input name="name" required autocomplete="name" maxlength="100"></label>
-      <label>Email<input name="email" type="email" required autocomplete="email" maxlength="254"></label>
-      <label>Phone<input name="phone" type="tel" autocomplete="tel" maxlength="30"></label>
+      <div class="row">
+        <label>Email<input name="email" type="email" required autocomplete="email" maxlength="254"></label>
+        <label>Phone<input name="phone" type="tel" autocomplete="tel" maxlength="30"></label>
+      </div>
       <div class="row">
         <label>Date<input name="date" type="date" required></label>
         <label>Guests<input name="guests" type="number" min="2" max="200" required></label>
@@ -110,7 +113,7 @@
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261124v"></script>
-<script src="main.js?v=20261124v"></script>
+<script src="content.js?v=20261124w"></script>
+<script src="main.js?v=20261124w"></script>
 </body>
 </html>
