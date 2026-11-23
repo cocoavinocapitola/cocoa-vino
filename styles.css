@@ -166,6 +166,7 @@ p { margin: 0 0 1em; }
 .beat { padding: 1.8rem; border-radius: 2px; border: 1px solid var(--line-dark); background: rgba(255, 255, 255, .02); }
 .beat-day { display: inline-block; background: var(--gold); color: var(--cocoa); font-weight: 600; padding: .2em .8em; border-radius: 2px; margin-bottom: 1rem; }
 .beat p { margin: 0; }
+.every-week-light .beat { background: #fff; border: 1px solid #ece3d4; border-top: 3px solid var(--gold); box-shadow: 0 12px 30px rgba(10, 15, 31, .06); }
 
 /* Newsletter */
 .newsletter { max-width: 640px; margin: 0 auto; text-align: center; }
