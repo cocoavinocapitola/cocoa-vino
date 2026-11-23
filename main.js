@@ -122,46 +122,97 @@
     .map((w) => `<li><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></li>`).join("");
 
   // Menu page: one section per menu group, with a sticky tab bar that follows your scroll
-  // Menu page: the wine list (wine-list.js), grouped like the printed menu
+  // Menu page: the wine list (wine-list.js), grouped like the printed menu.
+  // On wide screens each section is split into two even columns; a list that
+  // runs over carries on under "continued", like the printed menu.
   const wines = $("#wines");
   if (wines && window.WINE_LIST) {
     const p = (v) => (v === "" || v == null ? "" : esc(v));
-    const row = (w) => `
-      <li data-search="${esc((w.name + " " + w.note).toLowerCase())}">
-        <div class="wine-name"><strong>${esc(w.name)}</strong>${w.note ? `<span class="wine-note">${esc(w.note)}</span>` : ""}</div>
-        <span class="wine-price">${p(w.glass)}</span><span class="wine-price">${p(w.bottle)}</span>
-      </li>`;
+    const head = (name, cont) => `<div class="wine-group-head${cont ? " is-cont" : ""}"><h3>${esc(name)}${cont ? " <span class=\"cont\">continued</span>" : ""}</h3><span>Glass</span><span>Bottle</span></div>`;
+    const sub = (name, cont) => `<h4>${esc(name)}${cont ? " continued" : ""}</h4>`;
+    const row = (w) => `<div class="wine-row"><div class="wine-name"><strong>${esc(w.name)}</strong>${w.note ? `<span class="wine-note">${esc(w.note)}</span>` : ""}</div><span class="wine-price">${p(w.glass)}</span><span class="wine-price">${p(w.bottle)}</span></div>`;
+    // Flatten a section into a list of tokens: group heads, sub heads and wines
+    const tokens = (sec, q) => {
+      const out = [];
+      sec.groups.forEach((g) => {
+        const gt = [];
+        g.subs.forEach((s) => {
+          const items = s.items.filter((w) => !q || (w.name + " " + w.note).toLowerCase().includes(q));
+          if (!items.length) return;
+          if (s.name) gt.push({ t: "s", g, s });
+          items.forEach((w) => gt.push({ t: "i", g, s, w }));
+        });
+        if (gt.length) out.push({ t: "g", g }, ...gt);
+      });
+      return out;
+    };
+    const html = (tk) => tk.t === "g" ? head(tk.g.name) : tk.t === "s" ? sub(tk.s.name) : row(tk.w);
+    const wide = () => matchMedia("(min-width: 901px)").matches;
+
+    // Build every section's shell once
     wines.innerHTML = window.WINE_LIST.map((sec, n) => `
       <section class="section wine-section${n % 2 ? " section-dark" : ""}${sec.id === "reserve" ? " is-reserve" : ""}" id="${esc(sec.id)}">
         <div class="wine-inner">
-          <div class="wine-section-head">
-            <h2>${esc(sec.title)}</h2>
-            <p class="menu-intro">${esc(sec.intro)}</p>
-          </div>
-          <div class="wine-groups">${sec.groups.map((g) => `
-            <div class="wine-group">
-              <div class="wine-group-head"><h3>${esc(g.name)}</h3><span>Glass</span><span>Bottle</span></div>
-              ${g.subs.map((s) => `${s.name ? `<h4>${esc(s.name)}</h4>` : ""}<ul class="wine-rows">${s.items.map(row).join("")}</ul>`).join("")}
-            </div>`).join("")}
-          </div>
+          <div class="wine-section-head"><h2>${esc(sec.title)}</h2><p class="menu-intro">${esc(sec.intro)}</p></div>
+          <div class="wine-cols"></div>
         </div>
       </section>`).join("");
-    // Search: show only matching wines, hide empty groups and sections
-    const search = $("#wine-search"), count = $("#search-count");
-    search.addEventListener("input", () => {
-      const q = search.value.trim().toLowerCase();
+
+    const layout = (q) => {
       let hits = 0;
-      $$("#wines li").forEach((li) => { const on = !q || li.dataset.search.includes(q); li.hidden = !on; if (on) hits++; });
-      $$("#wines .wine-rows").forEach((ul) => {
-        const any = [...ul.children].some((li) => !li.hidden);
-        ul.hidden = !any;
-        const h = ul.previousElementSibling;
-        if (h && h.tagName === "H4") h.hidden = !any;
+      window.WINE_LIST.forEach((sec) => {
+        const el = document.getElementById(sec.id);
+        const cols = el.querySelector(".wine-cols");
+        const tk = tokens(sec, q);
+        hits += tk.filter((x) => x.t === "i").length;
+        el.hidden = !tk.length;
+        if (!tk.length) { cols.innerHTML = ""; return; }
+        // Measure every token in one column at the real column width
+        cols.className = "wine-cols is-measuring";
+        cols.innerHTML = `<div class="wine-col">${tk.map(html).join("")}</div>`;
+        if (!wide()) { cols.className = "wine-cols"; return; }
+        const kids = [...cols.firstElementChild.children];
+        const tops = kids.map((k) => k.getBoundingClientRect().top);
+        const end = cols.firstElementChild.getBoundingClientRect().bottom;
+        const h = kids.map((k, i) => (i + 1 < kids.length ? tops[i + 1] : end) - tops[i]);
+        const total = h.reduce((a, b) => a + b, 0);
+        const contH = h[0] || 60;
+        // Best split: only before a wine or a new group, never leaving a header alone
+        let best = tk.length, bestDiff = Infinity, run = 0;
+        for (let k = 1; k < tk.length; k++) {
+          run += h[k - 1];
+          const prev = tk[k - 1], cur = tk[k];
+          if (prev.t !== "i") continue;
+          if (cur.t === "s") continue;
+          const right = total - run + (cur.t === "i" ? contH : 0);
+          const diff = Math.abs(run - right);
+          if (diff < bestDiff) { bestDiff = diff; best = k; }
+        }
+        const left = tk.slice(0, best), rightTk = tk.slice(best);
+        let carry = "";
+        if (rightTk.length && rightTk[0].t === "i") {
+          const first = rightTk[0];
+          carry = head(first.g.name, true);
+          const prevSub = left[left.length - 1].s;
+          if (first.s.name && prevSub === first.s) carry += sub(first.s.name, true);
+        }
+        cols.className = "wine-cols is-split";
+        cols.innerHTML = `<div class="wine-col">${left.map(html).join("")}</div><div class="wine-col">${carry}${rightTk.map(html).join("")}</div>`;
       });
-      $$("#wines .wine-group").forEach((g) => { g.hidden = !g.querySelector("li:not([hidden])"); });
-      $$("#wines .wine-section").forEach((s) => { s.hidden = !s.querySelector("li:not([hidden])"); });
+      return hits;
+    };
+
+    const search = $("#wine-search"), count = $("#search-count");
+    const run = () => {
+      const q = search.value.trim().toLowerCase();
+      const hits = layout(q);
       count.textContent = q ? (hits ? `${hits} wine${hits === 1 ? "" : "s"} found` : "No match. Ask the bar, the Reserve list changes often.") : "";
-    });
+    };
+    run();
+    search.addEventListener("input", run);
+    let rt, lastW = innerWidth;
+    addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(run, 150); });
+    if (document.fonts) document.fonts.ready.then(run);
   }
 
   const menu = $("#menu");
