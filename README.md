@@ -49,6 +49,7 @@ See **`BRAND.md`** for the names we always use, the voice rules and the look.
 - [ ] Confirm the Instagram handle (`cocoavinocapitola` is a guess from the event pages)
 - [ ] Name the chocolate maker in `content.js` (`chocolate`)
 - [x] Wine list: loaded from the printed menu and Reserve card into `wine-list.js`. Update it there when the list changes.
+  - "Bent Dime Lemoncello" is the brand's own spelling. Still to confirm: Quady Orange Muscat bottle price (printed as 32).
 - [ ] Connect the newsletter to Kit (below)
 - [ ] Connect the contact form: paste a Formspree or Basin URL into `contactFormAction`. Until then, it asks people to call.
 - [x] Email: cocoavinocapitola@gmail.com
