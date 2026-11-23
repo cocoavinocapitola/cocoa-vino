@@ -35,7 +35,7 @@ window.WINE_LIST = [
         { name: "Chappellet Cabernet Sauvignon “Pritchard Hill”", note: "Napa Valley, 2023", glass: "176", bottle: "705", featured: true },
         { name: "Pahlmeyer Red", note: "Red blend, Napa, 2022", glass: "75", bottle: "300" },
         { name: "Quintessa", note: "Red blend, Rutherford, Napa Valley, 2023", glass: "140", bottle: "560", featured: true },
-        { name: "Ridge Monte Bello", note: "Santa Cruz Mountains, 2022", glass: "168", bottle: "675", featured: true, homeNote: "Santa Cruz Mountains, 20 minutes from this bar." },
+        { name: "Ridge Monte Bello", note: "Santa Cruz Mountains, 2022", glass: "168", bottle: "675", featured: true },
         { name: "Bibi Graetz Testamatta Rosso", note: "Toscana, 2020", glass: "81", bottle: "243" },
         { name: "Chapoutier Hermitage La Sizeranne", note: "Rhône, 2020", glass: "120", bottle: "360" },
         { name: "Bruno Giacosa Barolo", note: "Piedmont, 2020", glass: "192", bottle: "576", featured: true },

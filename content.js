@@ -59,6 +59,15 @@ window.SITE = {
   ],
 
   // Home: "Ask Rodney" section
+  // Home: the press card under the Reserve pours. "listLine" is optional: leave it
+  // null until it's confirmed that Cocoa Vino is on the Coravin Guide's 2025 list.
+  press: {
+    quote: "Exceptional. Over 60 wines by the glass.",
+    source: "Coravin Guide, 2025",
+    url: "https://guide.coravin.com/products/cocoa-vino",
+    listLine: null, // e.g. { before: 'One of 35 "three glass" wine bars worldwide on the ', link: "Coravin Guide's 2025 list", after: ".", url: "https://guide.coravin.com/blogs/wine-destinations/three-glass-rated-wine-venues-worldwide" }
+  },
+
   rodney: {
     kicker: "The wine and chocolate guy",
     title: "Ask Rodney what to pour",

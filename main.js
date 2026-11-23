@@ -135,6 +135,18 @@
       <li><h3>${esc(w.name)}</h3>${w.note ? `<p>${esc(w.note)}</p>` : ""}${w.homeNote ? `<p class="reserve-local">${esc(w.homeNote)}</p>` : ""}</li>`).join("");
   }
 
+  // Home: press card, from S.press
+  const press = $("#press-card");
+  if (press && S.press) {
+    const p = S.press, u = safeUrl(p.url), l = p.listLine, lu = l && safeUrl(l.url);
+    press.innerHTML = `
+      <a class="press-main" href="${esc(u || "#")}" target="_blank" rel="noopener">
+        <p class="press-quote">${esc(p.quote)}</p>
+        <p class="press-source">${esc(p.source)}</p>
+      </a>${l ? `
+      <p class="press-list">${esc(l.before)}${lu ? `<a href="${esc(lu)}" target="_blank" rel="noopener">${esc(l.link)}</a>` : esc(l.link)}${esc(l.after || "")}</p>` : ""}`;
+  }
+
   // Home: "Ask Rodney" section, from S.rodney. Until images/rodney.jpg exists,
   // fall back to the bar photo so the page never shows a broken image.
   const rodney = $("#rodney-inner");
