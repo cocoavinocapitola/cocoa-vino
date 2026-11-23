@@ -397,7 +397,7 @@
         <div class="event-body"><h3>${esc(e.title)}</h3><p>${esc(e.text)}</p></div>
       </article>` : `
       <article class="event${e.image ? " has-img" : ""}">
-        ${e.image ? `<img class="event-img" src="${esc(e.image)}" alt="" loading="lazy">` : ""}
+        ${e.image ? `<img class="event-img" src="${esc(e.image)}" alt="${esc(e.imageAlt || `${e.title}${e.badge ? `, ${e.badge.toLowerCase()}` : ""} at Cocoa Vino wine bar in Capitola Village`)}" loading="lazy">` : ""}
         ${dateBox(e)}
         <div class="event-body">
           ${e.badge ? `<span class="badge">${esc(e.badge)}</span>` : ""}
