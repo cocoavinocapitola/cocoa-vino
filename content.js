@@ -63,7 +63,7 @@ window.SITE = {
   // null until it's confirmed that Cocoa Vino is on the Coravin Guide's 2025 list.
   press: {
     quote: "Over 100 wines by the glass.",
-    source: "Rated Three Glass, the Coravin Guide's top rating, 2025",
+    source: "Rated Three Glass, the Coravin Guide's top rating, 2026",
     url: "https://guide.coravin.com/products/cocoa-vino",
     // The official Coravin Guide badge. Save the file Coravin sent as images/coravin-badge.png.
     // Until it exists, the card shows without it.
