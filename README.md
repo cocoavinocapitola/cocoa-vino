@@ -56,7 +56,7 @@ See **`BRAND.md`** for the names we always use, the voice rules and the look.
 - [ ] Connect private event requests: paste a Formspree or Basin URL into `privateEventsFormAction`. Until then, the form asks guests to call.
 - [ ] Reservations: Reserve currently opens the Wix booking page on the old site. Switch `reservationsUrl` to OpenTable or Tock before the domain moves.
 - [ ] Priority photos still wanted: fire pit at dusk with people, the room full on a music night, a single pour of Champagne, the village or beach from the door, the chocolate
-- [ ] Rodney photo: save it as `images/rodney.jpg` (the Ask Rodney section shows the bar photo until then).
+- [x] Rodney photo: `images/rodney.jpg` (replace the file to change it).
 - [ ] Logo: the wordmark (COCOA VINO / CAPITOLA VILLAGE in Cinzel) is the logo for now, with `images/monogram.svg` as the browser icon. Swap in an official logo file if there is one.
 
 ## Connecting Kit (newsletter)

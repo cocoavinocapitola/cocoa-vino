@@ -73,10 +73,9 @@ window.SITE = {
     title: "Ask Rodney what to pour",
     body: "Rodney Wartzok is our sommelier, self-taught and allergic to the word \"curated.\" Tell him what you like and he'll pour something you haven't tried, then hand you the chocolate that goes with it.",
     button: { text: "See the menu", href: "menu.html" },
-    // PHOTO STILL NEEDED: save a photo of Rodney as images/rodney.jpg.
-    // Until it exists, the section shows the bar photo instead.
+    // To change the photo, replace images/rodney.jpg. If it is missing, the bar photo shows instead.
     image: "images/rodney.jpg",
-    imageAlt: "Rodney Wartzok behind the bar at Cocoa Vino",
+    imageAlt: "Rodney Wartzok smiling in front of the gold-framed Cocoa Vino sign",
   },
 
   // MENU PAGE food (from the printed food menu). Prices as printed.
