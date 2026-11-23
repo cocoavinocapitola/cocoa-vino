@@ -128,7 +128,7 @@
   const wines = $("#wines");
   if (wines && window.WINE_LIST) {
     const p = (v) => (v === "" || v == null ? "" : esc(v));
-    const head = (name, cont) => `<div class="wine-group-head${cont ? " is-cont" : ""}"><h3>${esc(name)}${cont ? " <span class=\"cont\">continued</span>" : ""}</h3><span>Glass</span><span>Bottle</span></div>`;
+    const head = (g, cont) => { const c = g.cols || ["Glass", "Bottle"]; return `<div class="wine-group-head${cont ? " is-cont" : ""}"><h3>${esc(g.name)}${cont ? " <span class=\"cont\">continued</span>" : ""}</h3><span>${esc(c[0])}</span><span>${esc(c[1])}</span></div>`; };
     const sub = (name, cont) => `<h4>${esc(name)}${cont ? " continued" : ""}</h4>`;
     const row = (w) => `<div class="wine-row"><div class="wine-name"><strong>${esc(w.name)}</strong>${w.note ? `<span class="wine-note">${esc(w.note)}</span>` : ""}</div><span class="wine-price">${p(w.glass)}</span><span class="wine-price">${p(w.bottle)}</span></div>`;
     // Flatten a section into a list of tokens: group heads, sub heads and wines
@@ -146,7 +146,8 @@
       });
       return out;
     };
-    const html = (tk) => tk.t === "g" ? head(tk.g.name) : tk.t === "s" ? sub(tk.s.name) : row(tk.w);
+    // Groups with a single price (beer, spritzers) show it in the right-hand column
+    const html = (tk) => tk.t === "g" ? head(tk.g) : tk.t === "s" ? sub(tk.s.name) : row(tk.g.cols && tk.g.cols[0] === "" ? { ...tk.w, glass: "", bottle: tk.w.glass } : tk.w);
     const wide = () => matchMedia("(min-width: 901px)").matches;
 
     // Build every section's shell once
@@ -192,7 +193,7 @@
         let carry = "";
         if (rightTk.length && rightTk[0].t === "i") {
           const first = rightTk[0];
-          carry = head(first.g.name, true);
+          carry = head(first.g, true);
           const prevSub = left[left.length - 1].s;
           if (first.s.name && prevSub === first.s) carry += sub(first.s.name, true);
         }
@@ -206,7 +207,7 @@
     const run = () => {
       const q = search.value.trim().toLowerCase();
       const hits = layout(q);
-      count.textContent = q ? (hits ? `${hits} wine${hits === 1 ? "" : "s"} found` : "No match. Ask the bar, the Reserve list changes often.") : "";
+      count.textContent = q ? (hits ? `${hits} match${hits === 1 ? "" : "es"} found` : "No match. Ask the bar, the Reserve list changes often.") : "";
     };
     run();
     search.addEventListener("input", run);
@@ -216,22 +217,38 @@
   }
 
   const menu = $("#menu");
-  if (menu) {
-    const price = (label, v) => v ? `<span class="price"><span class="price-label">${label}</span> ${esc(v)}</span>` : "";
-    menu.innerHTML = S.menu.map((sec) => `
-      <section class="section menu-section" id="${esc(sec.id)}">
-        <div class="menu-inner">
-          <h2>${esc(sec.title)}</h2>
-          ${sec.image ? `<img class="menu-photo" src="${esc(sec.image)}" alt="${esc(sec.imageAlt || "")}" loading="lazy">` : ""}
-          <p class="menu-intro">${esc(sec.intro)}</p>
-          ${sec.items.length ? `<ul class="menu-list">${sec.items.map((w) => `
-            <li>
-              <div><strong>${esc(w.name)}</strong>${w.region ? ` <span class="menu-region">${esc(w.region)}</span>` : ""}${w.note ? `<p>${esc(w.note)}</p>` : ""}</div>
-              <div class="prices">${price("Glass", w.glass)}${price("Bottle", w.bottle)}</div>
-            </li>`).join("")}</ul>`
-          : `<p class="menu-ask">Point at any bottle on the wall and ask for a glass.</p>`}
+  if (menu && S.food) {
+    const f = S.food;
+    const list = (items) => `<ul class="food-choices">${items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
+    menu.innerHTML = `
+      <section class="section menu-section food-section" id="bites">
+        <div class="wine-inner">
+          <div class="food-top">
+            <div>
+              <h2>${esc(f.title)}</h2>
+              <p class="menu-intro">${esc(f.intro)}</p>
+            </div>
+            <img class="menu-photo" src="${esc(f.image)}" alt="${esc(f.imageAlt)}" loading="lazy">
+          </div>
+          <div class="boards">${f.boards.map((b) => `
+            <article class="board">
+              <div class="board-head"><h3>${esc(b.name)}</h3><span class="board-price">${esc(b.price)}</span></div>
+              <p>${esc(b.text)}</p>
+              ${b.note ? `<p class="board-note">${esc(b.note)}</p>` : ""}
+              ${b.includes.length ? list(b.includes) : ""}
+            </article>`).join("")}
+          </div>
+          <p class="board-add">${esc(f.additions)}</p>
+          <div class="choose">
+            <div><h3 class="choose-head">Choose your cheeses</h3>${list(f.cheeses)}</div>
+            <div><h3 class="choose-head">Choose your charcuterie</h3>${list(f.charcuterie)}</div>
+          </div>
+          <div class="bites">
+            <h3 class="choose-head">Bites</h3>
+            ${f.bites.map((x) => `<div class="wine-row bite-row"><div class="wine-name"><strong>${esc(x.name)}</strong>${x.note ? `<span class="wine-note">${esc(x.note)}</span>` : ""}</div><span class="wine-price">${esc(x.price)}</span></div>`).join("")}
+          </div>
         </div>
-      </section>`).join("");
+      </section>`;
     const tabs = $$(".menu-tabs a");
     const spy = new IntersectionObserver((entries) => {
       entries.forEach((en) => {

@@ -391,6 +391,30 @@ p { margin: 0 0 1em; }
 #bites { background: var(--paper); }
 @media (max-width: 900px) { .glass-inner { grid-template-columns: 1fr; gap: 2rem; } }
 
+/* Menu page: food */
+.food-top { display: grid; grid-template-columns: 1fr 1.15fr; gap: 4rem; align-items: center; margin-bottom: 3rem; }
+.food-top .menu-photo { margin: 0; }
+.boards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.board { background: #fff; border-top: 3px solid var(--gold); padding: 2rem; box-shadow: 0 16px 40px rgba(10, 15, 31, .08); }
+.board-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: .6rem; }
+.board-head h3 { margin: 0; font-size: 1.8rem; }
+.board-price { font: 500 1.8rem var(--serif); color: #7d5a1e; }
+.board p { margin: 0 0 .8rem; font-size: 1.08rem; }
+.board-note { color: var(--muted); }
+.board .food-choices { columns: 2; column-gap: 1.5rem; }
+.board-add { margin: 1.2rem 0 3rem; font: 500 1rem var(--caps); letter-spacing: .12em; text-transform: uppercase; color: #7d5a1e; text-align: center; }
+.choose { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4.5rem; margin-bottom: 3rem; }
+.choose-head { font-size: 1.5rem; padding-bottom: .5rem; border-bottom: 2px solid var(--gold); margin: 0 0 .6rem; }
+.food-choices { list-style: none; padding: 0; margin: 0; }
+.food-choices li { padding: .4rem 0; border-bottom: 1px solid #ece3d4; break-inside: avoid; }
+.board .food-choices li { border: 0; padding: .2rem 0; }
+.bites { max-width: 760px; }
+.bite-row { grid-template-columns: 1fr 4.6rem; }
+@media (max-width: 900px) {
+  .food-top, .boards, .choose { grid-template-columns: 1fr; gap: 2rem; }
+  .board .food-choices { columns: 1; }
+}
+
 /* Private events band at the bottom of Home */
 .private-band { padding: 4.5rem 5vw; color: #fff; text-align: center;
   background: linear-gradient(180deg, rgba(10, 15, 31, .45), rgba(10, 15, 31, .8)), url("images/patio.jpg") center 42%/cover; }

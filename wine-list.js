@@ -91,7 +91,7 @@ window.WINE_LIST = [
       ] },
     ] },
   ] },
-  { id: "sparkling", title: "Sparkling, Spritzes & Mimosas", intro: "Bubbles from California, France and Italy, plus mimosas and spritzes for a sunny afternoon on the patio.", groups: [
+  { id: "sparkling", title: "Sparkling & Mimosas", intro: "Bubbles from California, France and Italy, plus mimosas for a sunny afternoon on the patio.", groups: [
     { name: "California", subs: [
       { name: "", items: [
         { name: "Piper Sonoma Rosé", note: "Sonoma County, Brut", glass: "14", bottle: "42" },
@@ -122,11 +122,9 @@ window.WINE_LIST = [
         { name: "Saracco Moscato d'Asti", note: "Piedmont, 2024", glass: "14", bottle: "42" },
       ] },
     ] },
-    { name: "Spritzes & Mimosas", subs: [
+    { name: "Mimosas", subs: [
       { name: "", items: [
         { name: "Mimosa", note: "Choice of Perfect Purées", glass: "15", bottle: "45" },
-        { name: "Bent Dime Lemoncello Spritz", note: "", glass: "16", bottle: "" },
-        { name: "Bent Dime Orancello Spritz", note: "", glass: "16", bottle: "" },
       ] },
     ] },
   ] },
@@ -355,7 +353,7 @@ window.WINE_LIST = [
       ] },
     ] },
   ] },
-  { id: "dessert", title: "Dessert Wine & Beer", intro: "Port, Madeira and Tokaji to finish the night, and local beer from Laughing Monk.", groups: [
+  { id: "dessert", title: "Dessert Wine", intro: "Port, Madeira and Tokaji to finish the night.", groups: [
     { name: "Dessert Wine", subs: [
       { name: "", items: [
         { name: "Quady Orange Muscat", note: "", glass: "12", bottle: "32" },
@@ -371,11 +369,30 @@ window.WINE_LIST = [
         { name: "Royal Tokaji Essencia", note: "Hungary, 2016, 1 oz. pour", glass: "180", bottle: "1720" },
       ] },
     ] },
-    { name: "Beer", subs: [
+  ] },
+  { id: "drinks", title: "Beer, Spritzers & Non-Alcoholic", intro: "Local beer on tap, Bent Dime spritzers, and plenty for anyone skipping the wine tonight.", groups: [
+    { name: "On Tap", cols: ["", "Price"], subs: [
       { name: "", items: [
         { name: "Laughing Monk Holy Ghost Pilsner", note: "", glass: "9", bottle: "" },
         { name: "Laughing Monk Have Mercy Hazy IPA", note: "", glass: "9", bottle: "" },
-        { name: "Laughing Monk Sunday Best West Coast IPA", note: "", glass: "9", bottle: "" },
+        { name: "Kyla Hard Kombucha Lavender Lemonade", note: "", glass: "9", bottle: "" },
+        { name: "Sincere Hard Apple Cider", note: "", glass: "9", bottle: "" },
+      ] },
+    ] },
+    { name: "Spritzers", cols: ["", "Price"], subs: [
+      { name: "", items: [
+        { name: "Bent Dime Lemoncello Spritzer", note: "", glass: "16", bottle: "" },
+        { name: "Bent Dime Orangcello Spritzer", note: "", glass: "16", bottle: "" },
+      ] },
+    ] },
+    { name: "Non-Alcoholic", cols: ["Glass", "Bottle"], subs: [
+      { name: "", items: [
+        { name: "Erdinger Non-Alcoholic Beer", note: "", glass: "9", bottle: "" },
+        { name: "Dr. Steinbock NA Sparkling Riesling", note: "", glass: "12", bottle: "36" },
+        { name: "Italian Soda", note: "Choice of Perfect Purées", glass: "9", bottle: "" },
+        { name: "Saratoga Sparkling Water", note: "", glass: "4", bottle: "" },
+        { name: "A'Siciliana Limonata Soda", note: "", glass: "4", bottle: "" },
+        { name: "Coke or Diet Coke", note: "", glass: "4", bottle: "" },
       ] },
     ] },
   ] },

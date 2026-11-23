@@ -58,17 +58,30 @@ window.SITE = {
     { title: "Wine shop", text: "Every bottle on the wall is for sale. Stop in and take one home, no table needed." },
   ],
 
-  // MENU PAGE food section. The wine list lives in wine-list.js.
-  menu: [
-    { id: "bites", title: "Charcuterie Boards, Bites & Chocolates", image: "images/board.jpg", imageAlt: "A cheese, charcuterie and chocolate board with two glasses of red wine at Cocoa Vino",
-      intro: "Wine needs a wingman. Build a board for the table, grab a few bites for the fire pit, and save room for chocolates.", items: [
-      { name: "Cheese board", region: "", note: "A spread of soft, aged and blue cheeses with crackers, honey and fruit.", glass: "", bottle: "" },   // add price
-      { name: "Charcuterie board", region: "", note: "Prosciutto, salami and cheese, made for sharing.", glass: "", bottle: "" },   // add price
-      { name: "Bites", region: "", note: "Olives, nuts and crackers for when you just want a little something.", glass: "", bottle: "" },   // CONFIRM what's offered
-      { name: "Chocolates", region: "", note: "Truffles and dark chocolate by the piece. Ask the bar what pairs with your glass.", glass: "", bottle: "" },   // NAME the maker, add price
-    ] },
-  ],
-  chocolate: "Cheese and charcuterie boards, bites for the table, and chocolates by the piece. Ask the bar what pairs with your glass.",   // NAME the maker
+  // MENU PAGE food (from the printed food menu). Prices as printed.
+  food: {
+    title: "Charcuterie Boards, Bites & Chocolates",
+    image: "images/board.jpg",
+    imageAlt: "A cheese, charcuterie and chocolate board with two glasses of red wine at Cocoa Vino",
+    intro: "Wine needs a wingman. Build a board for the table, grab a few bites for the fire pit, and finish with dark chocolate.",
+    boards: [
+      { name: "Combo Charcuterie", price: "42", text: "Your choice of 3 artisanal cheeses and 3 charcuterie, served with Rustic Bakery crackers.", note: "Pick from 12 artisanal cheeses and 12 cured meats, listed below.", includes: [] },
+      { name: "Board & Boujee", price: "54", text: "Your choice of 3 artisanal cheeses and 3 charcuterie, plus:",
+        includes: ["Mixed Mediterranean olives", "Organic Marcona almonds", "Organic dried fruit", "Funny Farm organic honey", "Twin's Kitchen Champagne herb mustard", "Twin's Kitchen Foglifter fig jam", "Extra fine cornichons", "Dark chocolate bark", "Rustic Bakery crackers", "Mitica taralli crackers"] },
+    ],
+    additions: "Add another cheese or charcuterie to either board for 8.",
+    cheeses: ["El Trigal Queso Manchego DOP, 6 month", "Redhead Creamery Margie, farmstead clothbound cheddar", "Cave aged Swiss Gruyère AOP", "Roth Smoked Moody Blue", "Marin French Cheese Co. Petite Crème", "Point Reyes Toma", "Point Reyes Toma Truffle", "Point Reyes Toma Rashi", "Irish white cheddar", "Parmigiano Reggiano Stravecchio", "Sardinia Pecorino Romano", "Tête de Moine AOP"],
+    charcuterie: ["Journeyman Meat Co. Soppressata", "Journeyman Meat Co. Finocchiona", "Journeyman Meat Co. Il Pio", "Journeyman Meat Co. Vintner's Truffle", "Journeyman Meat Co. Sonoma Rosso", "Journeyman Meat Co. Parmigiano & Porcini", "Galloni Gran Riserva Prosciutto di Parma", "Fra'Mani Filone", "Fra'Mani uncured spicy capicollo", "P.G. Molinari coppa", "P.G. Molinari dry salame", "Smoking Goose Spruce Tip Bresaola"],
+    bites: [
+      { name: "Tuscan White Bean Spread", note: "Silky cannellini beans blended with rosemary, lemon and olive oil, served with Rustic Bakery crackers", price: "15" },
+      { name: "Artichoke, Olive & Caper Salad", note: "Marinated artichoke hearts, mixed olives, capers, lemon and Parmigiano Reggiano", price: "16" },
+      { name: "Brie with Fig Jam & Marcona Almonds", note: "Petite Crème brie, fig cardamom jam and Marcona almonds", price: "15" },
+      { name: "Mixed Mediterranean Olives", note: "", price: "9" },
+      { name: "Extra Fine Cornichons", note: "", price: "9" },
+      { name: "Dark Chocolate Macadamia Nuts", note: "", price: "12" },
+    ],
+  },
+  chocolate: "Build your own board from 12 cheeses and 12 charcuterie, add brie with fig jam or a white bean spread, and finish with dark chocolate macadamia nuts.",
 
   // Events. date: YYYY-MM-DD. Sorted automatically; past dates hide on their own.
   // badge: Live Music, DJ, Bingo, Trivia, Paint Party, Class or Closed.

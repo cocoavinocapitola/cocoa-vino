@@ -11,7 +11,7 @@ Top menu: Home · Events · Menu · Visit. Private Events sits at the bottom of 
 |---|---|---|
 | Home | `index.html` | Hero (positioning line, Tonight / Reserve, today's hours and address), This Week (next 7 days from the events data), The Patio, Wine & Chocolate, Every Week, newsletter |
 | Events | `events.html` | Full calendar with filters, Tickets & RSVP links and Add to calendar |
-| Menu | `menu.html` | The full wine list (Reserve, Champagne, Sparkling, White, Rosé, Red, Dessert & Beer) with glass and bottle prices, a search box, and Charcuterie Boards, Bites & Chocolates |
+| Menu | `menu.html` | The full wine list (Reserve, Champagne, Sparkling, White, Rosé, Red, Dessert), Beer, Spritzers & Non-Alcoholic, and Charcuterie Boards, Bites & Chocolates (the two boards, cheese and charcuterie choices, bites), with a search box |
 | Contact | `contact.html` | Phone, location, Instagram, hours, and a form with options for questions, performers (bands, musicians), class teachers and event hosts, and private events |
 | Private Events | `private-events.html` | Patio parties, buyouts, birthdays, corporate, one request form |
 | Visit | `visit.html` | Hours, walk-ins vs reservations, parking, map, phone, Instagram |
@@ -21,7 +21,7 @@ The header, footer and phone bar are repeated in each page. If you change one, c
 ## Updating content
 After changing `styles.css`, `main.js` or `content.js`, bump the `?v=` number on their links in the HTML pages so visitors get the new version right away instead of a cached copy.
 
-The wine list lives in **`wine-list.js`** (copy a line to add a wine, delete a line to remove one). Almost everything else lives in **`content.js`**: phone, Instagram, hours, the weekly rhythm, the wine program, the chocolate line, and every event.
+The wine and drinks list lives in **`wine-list.js`** and the food menu in `food` inside `content.js` (copy a line to add a wine, delete a line to remove one). Almost everything else lives in **`content.js`**: phone, Instagram, hours, the weekly rhythm, the wine program, the chocolate line, and every event.
 
 **Events:** add `{ date, time, title, badge, text, image, link }`. They sort by date on their own, past dates disappear, and a series ("Multiple Dates") is one entry per date. Badges: Live Music, DJ, Bingo, Trivia, Paint Party, Class, Closed. A "Closed" entry marks that day closed everywhere on the site.
 
