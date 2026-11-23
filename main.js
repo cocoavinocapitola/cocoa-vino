@@ -152,14 +152,6 @@
       <p class="press-list">${esc(l.before)}${lu ? `<a href="${esc(lu)}" target="_blank" rel="noopener">${esc(l.link)}</a>` : esc(l.link)}${esc(l.after || "")}</p>` : ""}`;
   }
 
-  const guruEl = $("#press-guru");
-  if (guruEl && S.press && S.press.guru) {
-    const g = S.press.guru, gu = safeUrl(g.url);
-    if (gu) {
-      guruEl.innerHTML = `<a class="guru-badge" href="${esc(gu)}" target="_blank" rel="noopener"><span class="guru-title">${esc(g.title)}</span><span class="guru-source">${esc(g.source)}</span></a>`;
-      guruEl.hidden = false;
-    }
-  }
   // Until the official badge file exists, show a badge drawn in the site's own style
   const badge = $(".press-badge");
   if (badge) badge.addEventListener("error", () => {

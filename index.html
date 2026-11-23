@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self' https:; form-action 'self' https:; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://awards.infcdn.net; font-src 'self' https://awards.infcdn.net; img-src 'self' data: https://awards.infcdn.net; frame-src https://www.google.com; connect-src 'self' https:; form-action 'self' https:; base-uri 'self'; object-src 'none'">
   <!-- PREVIEW: keep out of search engines until launch on cocoavinocapitola.com (see README) -->
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -22,7 +22,7 @@
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261125v">
+  <link rel="stylesheet" href="styles.css?v=20261125x">
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -90,7 +90,10 @@
 <!-- Press: text comes from "press" in content.js -->
 <section id="press" class="section press" aria-label="Press">
   <div class="press-card reveal" id="press-card"></div>
-  <p class="press-guru reveal" id="press-guru" hidden></p>
+  <!-- Restaurant Guru's official badge (their code; styles load from awards.infcdn.net) -->
+  <div class="press-guru reveal">
+    <link href="https://awards.infcdn.net/2026_new/badge-circledLeaves27.css" rel="stylesheet"/><a id="rg26-b-circledLeaves27" target="_blank" rel="noopener" href="https://restaurantguru.com/Cocoa-Vino-Capitola" class="rg26-b-circledLeaves27--dark rg26-b-circledLeaves27--2025"> <span class="rg26-b-circledLeaves27__title">Recommended</span> <span class="rg26-b-circledLeaves27__separator"></span> <span class="rg26-b-circledLeaves27__name">Cocoa Vino</span></a>
+  </div>
 </section>
 
 
@@ -187,7 +190,7 @@
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261125v"></script>
-<script src="main.js?v=20261125v"></script>
+<script src="content.js?v=20261125x"></script>
+<script src="main.js?v=20261125x"></script>
 </body>
 </html>
