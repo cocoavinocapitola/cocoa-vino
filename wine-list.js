@@ -93,7 +93,7 @@ window.WINE_LIST = [
       ] },
     ] },
   ] },
-  { id: "sparkling", title: "Sparkling & Mimosas", intro: "Bubbles from California, France and Italy, plus mimosas for a sunny afternoon on the patio.", groups: [
+  { id: "sparkling", title: "Sparkling, Mimosas & Spritzers", intro: "Bubbles from California, France and Italy, plus mimosas and Bent Dime spritzers for a sunny afternoon on the patio.", groups: [
     { name: "California", subs: [
       { name: "", items: [
         { name: "Piper Sonoma Rosé", note: "Sonoma County, Brut", glass: "14", bottle: "42" },
@@ -127,6 +127,12 @@ window.WINE_LIST = [
     { name: "Mimosas", subs: [
       { name: "", items: [
         { name: "Mimosa", note: "Choice of Perfect Purées", glass: "15", bottle: "45" },
+      ] },
+    ] },
+    { name: "Spritzers", cols: ["", "Price"], subs: [
+      { name: "", items: [
+        { name: "Bent Dime Lemoncello Spritzer", note: "", glass: "16", bottle: "" },
+        { name: "Bent Dime Orangcello Spritzer", note: "", glass: "16", bottle: "" },
       ] },
     ] },
   ] },
@@ -372,19 +378,13 @@ window.WINE_LIST = [
       ] },
     ] },
   ] },
-  { id: "drinks", title: "Beer, Spritzers & Non-Alcoholic", intro: "Local beer on tap, Bent Dime spritzers, and plenty for anyone skipping the wine tonight.", groups: [
+  { id: "drinks", title: "Beer & Non-Alcoholic", intro: "Local beer on tap, and plenty for anyone skipping the wine tonight.", groups: [
     { name: "On Tap", cols: ["", "Price"], subs: [
       { name: "", items: [
         { name: "Laughing Monk Holy Ghost Pilsner", note: "", glass: "9", bottle: "" },
         { name: "Laughing Monk Have Mercy Hazy IPA", note: "", glass: "9", bottle: "" },
         { name: "Kyla Hard Kombucha Lavender Lemonade", note: "", glass: "9", bottle: "" },
         { name: "Sincere Hard Apple Cider", note: "", glass: "9", bottle: "" },
-      ] },
-    ] },
-    { name: "Spritzers", cols: ["", "Price"], subs: [
-      { name: "", items: [
-        { name: "Bent Dime Lemoncello Spritzer", note: "", glass: "16", bottle: "" },
-        { name: "Bent Dime Orangcello Spritzer", note: "", glass: "16", bottle: "" },
       ] },
     ] },
     { name: "Non-Alcoholic", cols: ["Glass", "Bottle"], subs: [

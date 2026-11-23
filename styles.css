@@ -74,7 +74,9 @@ p { margin: 0 0 1em; }
    below the gilded sign, so they never cover it on any screen size. */
 /* Hero: the sign photo centered on top in its own box, words centered below,
    so the words can never sit on the photo. */
-.hero { position: relative; color: #fff; padding: 108px 5vw 4.5rem; background: #070b17; }
+.hero { position: relative; color: #fff; padding: 108px 5vw 4.5rem;
+  /* The same velvet blues as the dark menu sections */
+  background: radial-gradient(ellipse at 15% 0%, rgba(52, 72, 150, .35), transparent 55%), linear-gradient(160deg, #141d3a, #070b17); }
 .hero-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1.4rem; justify-items: center; }
 .hero-inner { position: relative; z-index: 1; max-width: 880px; text-align: center; }
 .hero h1 { font-size: clamp(2.3rem, 3.8vw, 3.7rem); margin-bottom: .4em; text-wrap: balance; }
@@ -225,6 +227,8 @@ p { margin: 0 0 1em; }
 
 /* Contact */
 .split-top { align-items: start; }
+/* Visit: the map sits at the top beside Hours and stays in view while you scroll */
+@media (min-width: 801px) { .visit-split .map { position: sticky; top: calc(108px + 2rem); } }
 .contact-list { list-style: none; padding: 0; margin: 0 0 1rem; font-size: 1.1rem; }
 .contact-list li { padding: .6rem 0; border-bottom: 1px solid #e6dccb; }
 .contact-label { display: inline-block; min-width: 7rem; font: 500 1rem var(--caps); letter-spacing: .12em; text-transform: uppercase; color: var(--wine); }
@@ -439,10 +443,12 @@ p { margin: 0 0 1em; }
 .food-choices { list-style: none; padding: 0; margin: 0; }
 .food-choices li { padding: .4rem 0; border-bottom: 1px solid #ece3d4; break-inside: avoid; }
 .board .food-choices li { border: 0; padding: .2rem 0; }
-.bites { max-width: 760px; }
+/* Bites: two columns lined up under cheese and charcuterie, read down the left then the right */
+.bites { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(var(--rows, 3), auto); grid-auto-flow: column; column-gap: 4.5rem; }
 .bite-row { grid-template-columns: 1fr 4.6rem; }
 @media (max-width: 900px) {
   .food-top, .boards, .choose { grid-template-columns: 1fr; gap: 2rem; }
+  .bites { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
   .board .food-choices { columns: 1; }
 }
 

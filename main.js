@@ -301,12 +301,14 @@
             <div><h3 class="choose-head">Choose your cheeses</h3>${list(f.cheeses)}</div>
             <div><h3 class="choose-head">Choose your charcuterie</h3>${list(f.charcuterie)}</div>
           </div>
+          <h3 class="choose-head">Bites</h3>
           <div class="bites">
-            <h3 class="choose-head">Bites</h3>
             ${f.bites.map((x) => `<div class="wine-row bite-row"><div class="wine-name"><strong>${esc(x.name)}</strong>${x.note ? `<span class="wine-note">${esc(x.note)}</span>` : ""}</div><span class="wine-price">${esc(x.price)}</span></div>`).join("")}
           </div>
         </div>
       </section>`;
+    const bites = menu.querySelector(".bites");
+    if (bites) bites.style.setProperty("--rows", Math.ceil(f.bites.length / 2));
     const tabs = $$(".menu-tabs a");
     const spy = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
