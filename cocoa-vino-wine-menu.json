@@ -1,0 +1,1381 @@
+{
+  "_howto": "Edit prices, names and details here and the Menu page updates. glass and bottle are shown as glass | bottle; items with one price use \"price\". \"featured\": true on a Reserve wine puts it on the home page (up to six). Each Reserve wine also appears in the section and group named in \"alsoIn\", so its price is edited in one place.",
+  "priceKey": "glass | bottle",
+  "reserve": {
+    "id": "reserve",
+    "title": "The Reserve List",
+    "tagline": "Our rarest bottles, and every one of them by the glass. Try a pour of Kosta Browne or Ridge Monte Bello without committing to the bottle.",
+    "groups": [
+      {
+        "name": "Champagne & Sparkling",
+        "items": [
+          {
+            "name": "Piper-Heidsieck Rare Millésime",
+            "detail": "Champagne, Brut",
+            "glass": "70",
+            "bottle": "275",
+            "featured": true,
+            "alsoIn": {
+              "section": "champagne",
+              "group": "Brut"
+            }
+          },
+          {
+            "name": "Billecart-Salmon Le Rosé",
+            "detail": "Champagne, Brut",
+            "glass": "75",
+            "bottle": "225",
+            "alsoIn": {
+              "section": "champagne",
+              "group": "Rosé"
+            }
+          },
+          {
+            "name": "Côte Premier Cru Champagne",
+            "detail": "Champagne, Millésime, 2010",
+            "glass": "82",
+            "bottle": "327",
+            "alsoIn": {
+              "section": "champagne",
+              "group": "Brut"
+            }
+          },
+          {
+            "name": "Billecart-Salmon Rosé Vintage",
+            "detail": "Champagne, Brut, 2015",
+            "glass": "99",
+            "bottle": "297",
+            "alsoIn": {
+              "section": "champagne",
+              "group": "Rosé"
+            }
+          },
+          {
+            "name": "J. Schram LD 60th Anniversary",
+            "detail": "North Coast, 2007",
+            "glass": "150",
+            "bottle": "450",
+            "alsoIn": {
+              "section": "sparkling",
+              "group": "California"
+            }
+          }
+        ]
+      },
+      {
+        "name": "White",
+        "items": [
+          {
+            "name": "Arista El Diablo Chardonnay",
+            "detail": "Russian River Valley, 2022",
+            "glass": "69",
+            "bottle": "207",
+            "alsoIn": {
+              "section": "white",
+              "group": "Chardonnay"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Red",
+        "items": [
+          {
+            "name": "Cattleya The Goddess Pinot Noir",
+            "detail": "Sonoma Coast, 2021",
+            "glass": "72",
+            "bottle": "216",
+            "alsoIn": {
+              "section": "red",
+              "group": "Pinot Noir"
+            }
+          },
+          {
+            "name": "Kosta Browne Pinot Noir",
+            "detail": "Sonoma Coast, 2023",
+            "glass": "78",
+            "bottle": "234",
+            "alsoIn": {
+              "section": "red",
+              "group": "Pinot Noir"
+            }
+          },
+          {
+            "name": "Orin Swift Mercury Head",
+            "detail": "Cabernet Sauvignon, Napa Valley, 2022",
+            "glass": "75",
+            "bottle": "300",
+            "alsoIn": {
+              "section": "red",
+              "group": "Cabernet Sauvignon"
+            }
+          },
+          {
+            "name": "Paul Hobbs “Coombsville” Cabernet Sauvignon",
+            "detail": "Napa Valley, 2022",
+            "glass": "77",
+            "bottle": "231",
+            "alsoIn": {
+              "section": "red",
+              "group": "Cabernet Sauvignon"
+            }
+          },
+          {
+            "name": "M by Michael Mondavi",
+            "detail": "Cabernet Sauvignon, Napa Valley, 2022",
+            "glass": "80",
+            "bottle": "240",
+            "alsoIn": {
+              "section": "red",
+              "group": "Cabernet Sauvignon"
+            }
+          },
+          {
+            "name": "Daou Soul of a Lion Cabernet Sauvignon",
+            "detail": "Paso Robles, 2021",
+            "glass": "80",
+            "bottle": "315",
+            "alsoIn": {
+              "section": "red",
+              "group": "Cabernet Sauvignon"
+            }
+          },
+          {
+            "name": "Patrimony Cabernet Sauvignon",
+            "detail": "Paso Robles, 2021",
+            "glass": "116",
+            "bottle": "465",
+            "alsoIn": {
+              "section": "red",
+              "group": "Cabernet Sauvignon"
+            }
+          },
+          {
+            "name": "Chappellet Cabernet Sauvignon “Pritchard Hill”",
+            "detail": "Napa Valley, 2023",
+            "glass": "176",
+            "bottle": "705",
+            "featured": true,
+            "alsoIn": {
+              "section": "red",
+              "group": "Cabernet Sauvignon"
+            }
+          },
+          {
+            "name": "Pahlmeyer Red",
+            "detail": "Red blend, Napa, 2022",
+            "glass": "75",
+            "bottle": "300",
+            "alsoIn": {
+              "section": "red",
+              "group": "Red Blends"
+            }
+          },
+          {
+            "name": "Quintessa",
+            "detail": "Red blend, Rutherford, Napa Valley, 2023",
+            "glass": "140",
+            "bottle": "560",
+            "featured": true,
+            "alsoIn": {
+              "section": "red",
+              "group": "Red Blends"
+            }
+          },
+          {
+            "name": "Ridge Monte Bello",
+            "detail": "Santa Cruz Mountains, 2022",
+            "glass": "168",
+            "bottle": "675",
+            "featured": true,
+            "alsoIn": {
+              "section": "red",
+              "group": "Red Blends"
+            }
+          },
+          {
+            "name": "Bibi Graetz Testamatta Rosso",
+            "detail": "Toscana, 2020",
+            "glass": "81",
+            "bottle": "243",
+            "alsoIn": {
+              "section": "red",
+              "group": "Italy",
+              "subgroup": "Tuscany"
+            }
+          },
+          {
+            "name": "Chapoutier Hermitage La Sizeranne",
+            "detail": "Rhône, 2020",
+            "glass": "120",
+            "bottle": "360",
+            "alsoIn": {
+              "section": "red",
+              "group": "France",
+              "subgroup": "Bordeaux & Rhône"
+            }
+          },
+          {
+            "name": "Bruno Giacosa Barolo",
+            "detail": "Piedmont, 2020",
+            "glass": "192",
+            "bottle": "576",
+            "featured": true,
+            "alsoIn": {
+              "section": "red",
+              "group": "Italy",
+              "subgroup": "Piedmont"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dessert",
+        "items": [
+          {
+            "name": "Graham's 50 Year Tawny Port",
+            "detail": "Portugal",
+            "glass": "100",
+            "bottle": "800",
+            "alsoIn": {
+              "section": "dessert",
+              "group": ""
+            }
+          },
+          {
+            "name": "Royal Tokaji Essencia",
+            "detail": "Hungary, 2016, 1 oz. pour",
+            "glass": "180",
+            "bottle": "1720",
+            "featured": true,
+            "alsoIn": {
+              "section": "dessert",
+              "group": ""
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "champagne",
+      "title": "Champagne",
+      "intro": "Every Champagne on our list is poured by the glass, prestige cuvées included.",
+      "groups": [
+        {
+          "name": "Brut",
+          "items": [
+            {
+              "name": "Piper-Heidsieck Cuvée",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "Deutz Classic",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "Drappier Carte d'Or",
+              "glass": "42",
+              "bottle": "150"
+            },
+            {
+              "name": "Charles Heidsieck Réserve",
+              "glass": "42",
+              "bottle": "150"
+            },
+            {
+              "name": "Billecart-Salmon Le Réserve",
+              "glass": "48",
+              "bottle": "144"
+            },
+            {
+              "name": "Louis Roederer Collection 246",
+              "glass": "48",
+              "bottle": "144"
+            }
+          ]
+        },
+        {
+          "name": "Extra Brut & Zero Dosage",
+          "items": [
+            {
+              "name": "Drappier Brut Nature",
+              "detail": "Zero dosage",
+              "glass": "35",
+              "bottle": "105"
+            },
+            {
+              "name": "Philipponnat Réserve Perpétuelle",
+              "detail": "Non Dosé",
+              "glass": "40",
+              "bottle": "120"
+            },
+            {
+              "name": "Bruno Paillard Première Cuvée",
+              "detail": "Extra Brut",
+              "glass": "42",
+              "bottle": "150"
+            }
+          ]
+        },
+        {
+          "name": "Blanc de Blancs",
+          "items": [
+            {
+              "name": "Gosset Grand Blanc de Blancs",
+              "glass": "62",
+              "bottle": "249"
+            }
+          ]
+        },
+        {
+          "name": "Blanc de Noirs",
+          "items": [
+            {
+              "name": "Alexandre Bonnet Blanc de Noirs",
+              "detail": "Extra Brut",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "Bollinger PN TX20",
+              "detail": "Brut",
+              "glass": "50",
+              "bottle": "150"
+            },
+            {
+              "name": "Bruno Paillard Blanc de Noirs",
+              "detail": "Grand Cru",
+              "glass": "63",
+              "bottle": "255"
+            }
+          ]
+        },
+        {
+          "name": "Rosé",
+          "items": [
+            {
+              "name": "Piper-Heidsieck Rosé",
+              "detail": "Brut",
+              "glass": "35",
+              "bottle": "105"
+            },
+            {
+              "name": "Deutz Rosé",
+              "detail": "Brut",
+              "glass": "40",
+              "bottle": "120"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sparkling",
+      "title": "Sparkling",
+      "intro": "Bubbles from California, France and Italy.",
+      "groups": [
+        {
+          "name": "California",
+          "items": [
+            {
+              "name": "Piper Sonoma Rosé",
+              "detail": "Sonoma County, Brut",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Iron Horse Wedding Cuvée",
+              "detail": "Green Valley, Sonoma, 2020",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Schramsberg Mirabelle Rosé",
+              "detail": "North Coast, Brut",
+              "glass": "23",
+              "bottle": "69"
+            },
+            {
+              "name": "Schramsberg Blanc de Blancs",
+              "detail": "North Coast, Vintage Brut 2022",
+              "glass": "25",
+              "bottle": "75"
+            }
+          ]
+        },
+        {
+          "name": "France",
+          "items": [
+            {
+              "name": "Vol Enchanté Crémant d'Alsace Rosé",
+              "detail": "Alsace, Brut",
+              "glass": "15",
+              "bottle": "45"
+            },
+            {
+              "name": "Pierre Sparr Crémant d'Alsace Rosé",
+              "detail": "Alsace, Brut",
+              "glass": "16",
+              "bottle": "48"
+            },
+            {
+              "name": "Louis de Grenelle Rosé",
+              "detail": "Saumur, Loire, Brut",
+              "glass": "16",
+              "bottle": "48"
+            }
+          ]
+        },
+        {
+          "name": "Italy",
+          "items": [
+            {
+              "name": "Lucci Lambrusco",
+              "glass": "13",
+              "bottle": "39"
+            },
+            {
+              "name": "Scarpetta Prosecco",
+              "detail": "Brut, DOC",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Molo 8 Lambrusco",
+              "glass": "16",
+              "bottle": "48"
+            }
+          ]
+        },
+        {
+          "name": "Sweet & Lightly Sparkling",
+          "items": [
+            {
+              "name": "Dezzani Malvasia",
+              "detail": "Sweet sparkling red, Piedmont",
+              "glass": "13",
+              "bottle": "39"
+            },
+            {
+              "name": "I Vignaioli di Santo Stefano Moscato d'Asti",
+              "detail": "Piedmont, 2025",
+              "glass": "13",
+              "bottle": "39"
+            },
+            {
+              "name": "Saracco Moscato d'Asti",
+              "detail": "Piedmont, 2024",
+              "glass": "14",
+              "bottle": "42"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spritz",
+      "title": "Spritz & Mimosa",
+      "intro": "Mimosas and Bent Dime spritzers for a sunny afternoon on the patio.",
+      "groups": [
+        {
+          "name": "",
+          "items": [
+            {
+              "name": "Mimosa",
+              "detail": "Choice of Perfect Purées",
+              "glass": "15",
+              "bottle": "45"
+            },
+            {
+              "name": "Bent Dime Lemoncello Spritz",
+              "price": "16"
+            },
+            {
+              "name": "Bent Dime Orancello Spritz",
+              "price": "16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "white",
+      "title": "White Wine",
+      "intro": "Santa Cruz Mountains to the Loire, Chablis to Marlborough.",
+      "groups": [
+        {
+          "name": "Chardonnay",
+          "items": [
+            {
+              "name": "Talbott Sleepy Hollow",
+              "detail": "Santa Lucia Highlands, 2023",
+              "glass": "16",
+              "bottle": "48"
+            },
+            {
+              "name": "Trefethen",
+              "detail": "Napa Valley, 2023",
+              "glass": "17",
+              "bottle": "51"
+            },
+            {
+              "name": "Duckhorn",
+              "detail": "Napa, 2023",
+              "glass": "17",
+              "bottle": "51"
+            },
+            {
+              "name": "Keenan",
+              "detail": "Spring Mountain, Napa, 2022",
+              "glass": "18",
+              "bottle": "54"
+            },
+            {
+              "name": "Sonoma-Cutrer Les Pierres",
+              "detail": "Sonoma Coast, 2023",
+              "glass": "19",
+              "bottle": "57"
+            },
+            {
+              "name": "Frank Family",
+              "detail": "Carneros, 2024",
+              "glass": "19",
+              "bottle": "57"
+            },
+            {
+              "name": "Far Mountain “Myrna”",
+              "detail": "Sonoma County, 2021",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Barnett Sangiacomo",
+              "detail": "Carneros, 2023",
+              "glass": "23",
+              "bottle": "69"
+            },
+            {
+              "name": "Lloyd",
+              "detail": "Carneros, 2024",
+              "glass": "24",
+              "bottle": "72"
+            },
+            {
+              "name": "Orin Swift Mannequin",
+              "detail": "St. Helena, 2022",
+              "glass": "25",
+              "bottle": "75"
+            },
+            {
+              "name": "Pahlmeyer Jayson",
+              "detail": "Napa Valley, 2022",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "Ridge Estate",
+              "detail": "Santa Cruz Mountains, 2024",
+              "glass": "40",
+              "bottle": "120"
+            },
+            {
+              "name": "Chateau Montelena",
+              "detail": "Napa Valley, 2022",
+              "glass": "41",
+              "bottle": "123"
+            },
+            {
+              "name": "DuMOL Estate Vineyard",
+              "detail": "Sonoma, 2022",
+              "glass": "45",
+              "bottle": "170"
+            },
+            {
+              "name": "Pahlmeyer",
+              "detail": "Napa Valley, 2022",
+              "glass": "45",
+              "bottle": "177"
+            }
+          ]
+        },
+        {
+          "name": "Sauvignon Blanc",
+          "items": [
+            {
+              "name": "Saint Clair Family Estate",
+              "detail": "Marlborough, New Zealand, 2024",
+              "glass": "12",
+              "bottle": "36"
+            },
+            {
+              "name": "Gundlach Bundschu",
+              "detail": "Sonoma Coast, 2024",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Te Mata",
+              "detail": "Cape Crest, New Zealand",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Groth",
+              "detail": "Napa Valley, 2024",
+              "glass": "15",
+              "bottle": "45"
+            },
+            {
+              "name": "Whitehaven",
+              "detail": "Marlborough, New Zealand, 2023",
+              "glass": "16",
+              "bottle": "48"
+            },
+            {
+              "name": "Oberon",
+              "detail": "Napa, 2023",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Silver Oak",
+              "detail": "Northern California, 2025",
+              "glass": "25",
+              "bottle": "75"
+            },
+            {
+              "name": "Pahlmeyer Jayson",
+              "detail": "Napa Valley, 2024",
+              "glass": "27",
+              "bottle": "81"
+            }
+          ]
+        },
+        {
+          "name": "Other Whites",
+          "items": [
+            {
+              "name": "Greenwing Pinot Grigio",
+              "detail": "Willamette Valley, Oregon, 2025",
+              "glass": "12",
+              "bottle": "36"
+            },
+            {
+              "name": "Ponzi Pinot Gris",
+              "detail": "Willamette Valley, Oregon, 2023",
+              "glass": "13",
+              "bottle": "39"
+            },
+            {
+              "name": "Morgan Riesling",
+              "detail": "Santa Lucia Highlands, 2025",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Dry Creek Chenin Blanc",
+              "detail": "Wilson Ranch, 2024",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Limerick Lane Fáilte",
+              "detail": "Russian River, 2023",
+              "glass": "16",
+              "bottle": "48"
+            },
+            {
+              "name": "Ridge Grenache Blanc",
+              "detail": "Paso Robles, 2024",
+              "glass": "21",
+              "bottle": "63"
+            },
+            {
+              "name": "J Vineyards Pinot Gris",
+              "detail": "Russian River, 2022",
+              "glass": "22",
+              "bottle": "66"
+            }
+          ]
+        },
+        {
+          "name": "France",
+          "subgroups": [
+            {
+              "name": "Burgundy",
+              "items": [
+                {
+                  "name": "Louis Latour Pouilly-Fuissé",
+                  "detail": "Burgundy, 2023",
+                  "glass": "26",
+                  "bottle": "78"
+                },
+                {
+                  "name": "Saint Martin Chablis",
+                  "detail": "Laroche, Burgundy, 2023",
+                  "glass": "27",
+                  "bottle": "81"
+                },
+                {
+                  "name": "William Fèvre Chablis",
+                  "detail": "Champs Royaux, Burgundy, 2023",
+                  "glass": "27",
+                  "bottle": "81"
+                },
+                {
+                  "name": "Faiveley Mercurey “Le Vallon Blanc”",
+                  "detail": "Burgundy, 2023",
+                  "glass": "32",
+                  "bottle": "96"
+                },
+                {
+                  "name": "Maison Champy Pernand-Vergelesses",
+                  "detail": "Creux de la Net, Burgundy, 2022",
+                  "glass": "47",
+                  "bottle": "141"
+                }
+              ]
+            },
+            {
+              "name": "Loire & Provence",
+              "items": [
+                {
+                  "name": "Dominique Crochet Sancerre",
+                  "detail": "Loire, 2024",
+                  "glass": "25",
+                  "bottle": "75"
+                },
+                {
+                  "name": "Alphonse Mellot Satellite Sancerre",
+                  "detail": "Loire, 2023",
+                  "glass": "50",
+                  "bottle": "150"
+                },
+                {
+                  "name": "Peyrassol Les Clos Blanc",
+                  "detail": "Côtes de Provence, 2023",
+                  "glass": "63",
+                  "bottle": "189"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Italy",
+          "items": [
+            {
+              "name": "Masseria Li Veli Verdeca",
+              "detail": "Puglia, 2025",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Tommasi Le Fornaci Lugana",
+              "glass": "16",
+              "bottle": "48"
+            },
+            {
+              "name": "Antinori Guado al Tasso Vermentino",
+              "detail": "Tuscany, 2025",
+              "glass": "17",
+              "bottle": "51"
+            },
+            {
+              "name": "Santa Margherita Pinot Grigio 2024",
+              "glass": "19",
+              "bottle": "57"
+            }
+          ]
+        },
+        {
+          "name": "Spain",
+          "items": [
+            {
+              "name": "Pazo das Bruxas Albariño",
+              "detail": "Rías Baixas, 2023",
+              "glass": "15",
+              "bottle": "45"
+            },
+            {
+              "name": "Clos Figueras Serra del Priorat Blanco",
+              "detail": "Priorat, 2024",
+              "glass": "25",
+              "bottle": "75"
+            }
+          ]
+        },
+        {
+          "name": "Germany",
+          "items": [
+            {
+              "name": "Von Othegraven Riesling Max Trocken",
+              "detail": "Mosel, 2024",
+              "glass": "19",
+              "bottle": "57"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rose",
+      "title": "Rosé",
+      "intro": "Made for the patio, from Paso Robles to Provence.",
+      "groups": [
+        {
+          "name": "",
+          "items": [
+            {
+              "name": "Lucy Rosé",
+              "detail": "Santa Lucia Highlands, 2024",
+              "glass": "12",
+              "bottle": "36"
+            },
+            {
+              "name": "Liquid Farm Rosé",
+              "detail": "Santa Barbara County, 2025",
+              "glass": "13",
+              "bottle": "39"
+            },
+            {
+              "name": "Daou Rosé",
+              "detail": "Paso Robles, 2024",
+              "glass": "13",
+              "bottle": "39"
+            },
+            {
+              "name": "West of One Rosé",
+              "detail": "Russian River Valley, 2025",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Stoller Family Estate Pinot Noir Rosé",
+              "detail": "Willamette Valley, Oregon, 2025",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Peyrassol La Croix Rosé",
+              "detail": "France, 2025",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Roseblood d'Estoublon Rosé",
+              "detail": "France, 2025",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Belle Glos Oeil de Perdrix Rosé",
+              "detail": "Sonoma County, 2023",
+              "glass": "15",
+              "bottle": "45"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "red",
+      "title": "Red Wine",
+      "intro": "Santa Cruz Mountains Cabernet, Sonoma Pinot Noir, Napa legends, and the best of France, Italy and Spain.",
+      "groups": [
+        {
+          "name": "Cabernet Sauvignon",
+          "items": [
+            {
+              "name": "Bonanza “The Vinekeeper”",
+              "detail": "Napa Valley",
+              "glass": "18",
+              "bottle": "54"
+            },
+            {
+              "name": "Denner The New Colossus",
+              "detail": "Paso Robles, 2023",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Quilt",
+              "detail": "Napa, 2022",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Leviathan",
+              "detail": "Northern California, 2023",
+              "glass": "21",
+              "bottle": "63"
+            },
+            {
+              "name": "Orin Swift Bloodlines",
+              "detail": "St. Helena, 2024",
+              "glass": "22",
+              "bottle": "66"
+            },
+            {
+              "name": "Domaine Eden",
+              "detail": "Santa Cruz Mountains, 2019",
+              "glass": "23",
+              "bottle": "69"
+            },
+            {
+              "name": "Daou Reserve",
+              "detail": "Paso Robles, 2023",
+              "glass": "25",
+              "bottle": "75"
+            },
+            {
+              "name": "Duckhorn",
+              "detail": "Napa Valley, 2022",
+              "glass": "28",
+              "bottle": "84"
+            },
+            {
+              "name": "Frank Family",
+              "detail": "Napa, 2023",
+              "glass": "29",
+              "bottle": "87"
+            },
+            {
+              "name": "Keenan",
+              "detail": "Napa, 2021",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "Orin Swift Palermo",
+              "detail": "Napa Valley, 2022",
+              "glass": "35",
+              "bottle": "105"
+            },
+            {
+              "name": "Caymus",
+              "detail": "Napa Valley, 2023",
+              "glass": "38",
+              "bottle": "150"
+            },
+            {
+              "name": "Beringer Private Reserve",
+              "detail": "Napa Valley, 2018",
+              "glass": "42",
+              "bottle": "126"
+            },
+            {
+              "name": "Ridge",
+              "detail": "Santa Cruz Mountains, 2023",
+              "glass": "44",
+              "bottle": "132"
+            },
+            {
+              "name": "Louis Martini Gryphon",
+              "detail": "Napa Valley, 2021",
+              "glass": "45",
+              "bottle": "135"
+            },
+            {
+              "name": "Silver Oak",
+              "detail": "Napa, 2020",
+              "glass": "50",
+              "bottle": "195"
+            },
+            {
+              "name": "Beringer Private Reserve",
+              "detail": "Napa Valley, 2017",
+              "glass": "54",
+              "bottle": "162"
+            },
+            {
+              "name": "Beringer Private Reserve",
+              "detail": "Napa Valley, 2016",
+              "glass": "57",
+              "bottle": "170"
+            }
+          ]
+        },
+        {
+          "name": "Pinot Noir",
+          "items": [
+            {
+              "name": "Etude",
+              "detail": "Carneros, 2022",
+              "glass": "22",
+              "bottle": "66"
+            },
+            {
+              "name": "Twomey",
+              "detail": "Anderson Valley, 2023",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "DuMOL",
+              "detail": "Russian River Valley, 2023",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "Domaine Drouhin",
+              "detail": "Oregon, 2023",
+              "glass": "30",
+              "bottle": "90"
+            },
+            {
+              "name": "Dutton Goldfield",
+              "detail": "Russian River, 2023",
+              "glass": "34",
+              "bottle": "102"
+            },
+            {
+              "name": "Orin Swift Slander",
+              "detail": "St. Helena, 2023",
+              "glass": "34",
+              "bottle": "102"
+            },
+            {
+              "name": "Paul Hobbs",
+              "detail": "Russian River Valley, 2023",
+              "glass": "35",
+              "bottle": "105"
+            },
+            {
+              "name": "Bergström Cumberland Reserve",
+              "detail": "Willamette Valley, Oregon, 2023",
+              "glass": "38",
+              "bottle": "114"
+            }
+          ]
+        },
+        {
+          "name": "Merlot",
+          "items": [
+            {
+              "name": "Pedroncelli",
+              "detail": "East Side Vineyards, 2022",
+              "glass": "14",
+              "bottle": "42"
+            },
+            {
+              "name": "Trefethen",
+              "detail": "Napa Valley, 2022",
+              "glass": "19",
+              "bottle": "57"
+            },
+            {
+              "name": "Orin Swift Advice From John",
+              "detail": "St. Helena, 2023",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Duckhorn",
+              "detail": "Napa Valley, 2023",
+              "glass": "21",
+              "bottle": "63"
+            },
+            {
+              "name": "Pahlmeyer",
+              "detail": "Napa, 2022",
+              "glass": "45",
+              "bottle": "177"
+            }
+          ]
+        },
+        {
+          "name": "Zinfandel",
+          "items": [
+            {
+              "name": "Limerick Lane Stomping Grounds",
+              "detail": "Russian River, 2022",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Benovia",
+              "detail": "Sonoma County, 2021",
+              "glass": "23",
+              "bottle": "69"
+            },
+            {
+              "name": "Dry Creek Old Vine",
+              "detail": "Dry Creek, 2022",
+              "glass": "24",
+              "bottle": "72"
+            },
+            {
+              "name": "Storybook Mountain Bottled Poetry",
+              "detail": "Napa Estate, 2021",
+              "glass": "37",
+              "bottle": "111"
+            },
+            {
+              "name": "Ridge",
+              "detail": "Lytton Springs, 2023",
+              "glass": "40",
+              "bottle": "120"
+            }
+          ]
+        },
+        {
+          "name": "Syrah & Petite Sirah",
+          "items": [
+            {
+              "name": "Eberle Syrah Steinbeck",
+              "detail": "Paso Robles, 2022",
+              "glass": "22",
+              "bottle": "66"
+            },
+            {
+              "name": "Ridge Petite Sirah",
+              "detail": "Lytton Estate, 2022",
+              "glass": "34",
+              "bottle": "102"
+            }
+          ]
+        },
+        {
+          "name": "Red Blends",
+          "items": [
+            {
+              "name": "Ridge Three Valleys",
+              "detail": "Sonoma County, 2023",
+              "glass": "18",
+              "bottle": "54"
+            },
+            {
+              "name": "Denner Nightshade",
+              "detail": "Paso Robles, 2023",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Orin Swift Abstract",
+              "detail": "St. Helena, 2023",
+              "glass": "20",
+              "bottle": "60"
+            },
+            {
+              "name": "Orin Swift 8 Years in the Desert",
+              "detail": "St. Helena, 2024",
+              "glass": "25",
+              "bottle": "75"
+            },
+            {
+              "name": "Trefethen Dragon's Tooth",
+              "detail": "Napa Valley, 2022",
+              "glass": "25",
+              "bottle": "75"
+            },
+            {
+              "name": "Pahlmeyer Jayson Red",
+              "detail": "Napa Valley, 2022",
+              "glass": "35",
+              "bottle": "105"
+            },
+            {
+              "name": "Orin Swift Papillon",
+              "detail": "St. Helena, 2022",
+              "glass": "40",
+              "bottle": "120"
+            }
+          ]
+        },
+        {
+          "name": "France",
+          "subgroups": [
+            {
+              "name": "Burgundy",
+              "items": [
+                {
+                  "name": "Du Prieuré Bourgogne Pinot Noir",
+                  "detail": "Burgundy, 2022",
+                  "glass": "24",
+                  "bottle": "72"
+                },
+                {
+                  "name": "Domaine Dominique Guyon “Les Dames de Vergy” Bourgogne Pinot Noir",
+                  "detail": "Burgundy, 2023",
+                  "glass": "26",
+                  "bottle": "78"
+                }
+              ]
+            },
+            {
+              "name": "Bordeaux & Rhône",
+              "items": [
+                {
+                  "name": "Château Mangot St. Émilion",
+                  "detail": "Grand Cru, Bordeaux, 2020",
+                  "glass": "28",
+                  "bottle": "84"
+                },
+                {
+                  "name": "Du Vieux Lazaret Châteauneuf-du-Pape",
+                  "detail": "Rhône Valley",
+                  "glass": "29",
+                  "bottle": "87"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Italy",
+          "subgroups": [
+            {
+              "name": "Tuscany",
+              "items": [
+                {
+                  "name": "Brancaia Tre",
+                  "detail": "Toscana, 2022",
+                  "glass": "17",
+                  "bottle": "51"
+                },
+                {
+                  "name": "Bibbiano Chianti Classico Vigna del Capannino",
+                  "detail": "Gran Selezione, 2022",
+                  "glass": "25",
+                  "bottle": "75"
+                },
+                {
+                  "name": "Fonte alla Selva Chianti Classico “Gran Selezione”",
+                  "detail": "Castellina, 2021",
+                  "glass": "28",
+                  "bottle": "84"
+                },
+                {
+                  "name": "Torre Guelfa Brunello",
+                  "detail": "Tuscany, 2019",
+                  "glass": "32",
+                  "bottle": "96"
+                },
+                {
+                  "name": "Gaja Promis",
+                  "detail": "Tuscany, 2023",
+                  "glass": "48",
+                  "bottle": "144"
+                }
+              ]
+            },
+            {
+              "name": "Piedmont",
+              "items": [
+                {
+                  "name": "Produttori del Barbaresco Langhe Nebbiolo",
+                  "detail": "Piedmont, 2024",
+                  "glass": "21",
+                  "bottle": "63"
+                },
+                {
+                  "name": "Aldo Conterno Il Favot Langhe Nebbiolo",
+                  "detail": "Monforte d'Alba, 2022",
+                  "glass": "30",
+                  "bottle": "90"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spain",
+          "items": [
+            {
+              "name": "Sierra Cantabria Rioja Reserva 2018",
+              "glass": "47",
+              "bottle": "141"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dessert",
+      "title": "Dessert Wine",
+      "intro": "Port, Madeira and Moscatel to finish the night.",
+      "groups": [
+        {
+          "name": "",
+          "items": [
+            {
+              "name": "Quady Orange Muscat",
+              "glass": "12",
+              "bottle": "32"
+            },
+            {
+              "name": "Graham's Six Grapes Reserve Port",
+              "glass": "12",
+              "bottle": "48"
+            },
+            {
+              "name": "Quinta do Crasto LBV Port 2017",
+              "glass": "15",
+              "bottle": "60"
+            },
+            {
+              "name": "Jorge Ordoñez & Co. “Victoria No. 2” Moscatel",
+              "detail": "Spain, 2024",
+              "glass": "16",
+              "bottle": "66"
+            },
+            {
+              "name": "Graham's 10 Year Tawny Port",
+              "glass": "16",
+              "bottle": "64"
+            },
+            {
+              "name": "Blandy's Bual Madeira 10 Year",
+              "glass": "18",
+              "bottle": "75"
+            },
+            {
+              "name": "Blandy's Malmsey Madeira 10 Year",
+              "glass": "18",
+              "bottle": "75"
+            },
+            {
+              "name": "Graham's 20 Year Tawny Port",
+              "glass": "25",
+              "bottle": "100"
+            },
+            {
+              "name": "Quinta do Crasto 20 Year Tawny Port",
+              "glass": "32",
+              "bottle": "128"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beer",
+      "title": "Beer",
+      "intro": "Local beer on tap.",
+      "groups": [
+        {
+          "name": "",
+          "items": [
+            {
+              "name": "Laughing Monk Holy Ghost Pilsner",
+              "price": "9"
+            },
+            {
+              "name": "Laughing Monk Have Mercy Hazy IPA",
+              "price": "9"
+            },
+            {
+              "name": "Laughing Monk Sunday Best West Coast IPA",
+              "price": "9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

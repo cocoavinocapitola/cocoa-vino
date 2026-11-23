@@ -11,7 +11,7 @@ Top menu: Home · Events · Menu · Visit. Private Events sits at the bottom of 
 |---|---|---|
 | Home | `index.html` | Hero (positioning line, Tonight / Reserve, today's hours and address), This Week (next 7 days from the events data), The Patio, Wine & Chocolate, Every Week, newsletter |
 | Events | `events.html` | Full calendar with filters, Tickets & RSVP links and Add to calendar |
-| Menu | `menu.html` | The full wine list (Reserve, Champagne, Sparkling, White, Rosé, Red, Dessert; spritzers sit with Sparkling & Mimosas), Beer & Non-Alcoholic, and Charcuterie Boards, Bites & Chocolates (the two boards, cheese and charcuterie choices, bites), with a search box |
+| Menu | `menu.html` | The wine list, loaded from `cocoa-vino-wine-menu.json` (Reserve, Champagne, Sparkling, Spritz & Mimosa, White Wine, Rosé, Red Wine, Dessert Wine, Beer), then Charcuterie Boards, Bites & Chocolates, with a search box |
 | Contact | `contact.html` | Phone, location, Instagram, hours, and a form with options for questions, performers (bands, musicians), class teachers and event hosts, and private events |
 | Private Events | `private-events.html` | Patio parties, buyouts, birthdays, corporate, one request form |
 | Visit | `visit.html` | Hours, walk-ins vs reservations, parking, map, phone, Instagram |
@@ -86,3 +86,15 @@ https://kendahansen.github.io/cocoa-vino/ (GitHub Pages: Settings → Pages → 
 
 ## Hosting
 Netlify, Cloudflare Pages or GitHub Pages all work for free. Point `cocoavinocapitola.com` at the host when it's ready.
+
+## Updating the wine menu
+
+Edit `cocoa-vino-wine-menu.json` only. The Menu page (and the six Reserve bottles on the home page) read it when the page loads.
+
+- Each wine has `name`, an optional `detail`, and either `glass` and `bottle` (shown as glass | bottle) or a single `price`.
+- Sections and their groups (and subgroups, like Burgundy under France) show in the order they appear in the file.
+- Reserve wines are listed once, under `reserve`. Their `alsoIn` names the regular section and group where they also appear, so a Reserve price is edited in one place.
+- Up to six Reserve wines marked `"featured": true` show on the home page (no prices there).
+- Keep the file valid JSON (commas between items, straight double quotes around keys). If the file can't be read, the Menu page shows a "please call us" note instead of the list.
+- `wine-list.js` is the old list and is no longer used by any page.
+

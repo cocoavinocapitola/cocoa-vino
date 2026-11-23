@@ -123,16 +123,17 @@
     }
   }
 
-  // Home: six Reserve bottles, from the Reserve list in wine-list.js. Items marked
-  // featured: true come first (in list order); if fewer than six, fill from the top.
+  // Home: six Reserve bottles from cocoa-vino-wine-menu.json. Reserve wines marked
+  // "featured": true come first (in list order); if fewer than six, fill from the top.
   const reserveGrid = $("#reserve-grid");
-  if (reserveGrid && window.WINE_LIST) {
-    const sec = window.WINE_LIST.find((s) => s.id === "reserve");
-    const all = sec ? sec.groups.flatMap((g) => g.subs.flatMap((s) => s.items)) : [];
-    const picks = all.filter((w) => w.featured).slice(0, 6);
-    for (const w of all) { if (picks.length >= 6) break; if (!picks.includes(w)) picks.push(w); }
-    reserveGrid.innerHTML = picks.map((w) => `
-      <li><h3>${esc(w.name)}</h3>${w.note ? `<p>${esc(w.note)}</p>` : ""}${w.homeNote ? `<p class="reserve-local">${esc(w.homeNote)}</p>` : ""}</li>`).join("");
+  if (reserveGrid) {
+    fetch("cocoa-vino-wine-menu.json", { cache: "no-cache" }).then((r) => r.json()).then((data) => {
+      const all = data.reserve.groups.flatMap((g) => g.items);
+      const picks = all.filter((w) => w.featured).slice(0, 6);
+      for (const w of all) { if (picks.length >= 6) break; if (!picks.includes(w)) picks.push(w); }
+      reserveGrid.innerHTML = picks.map((w) => `
+        <li><h3>${esc(w.name)}</h3>${w.detail ? `<p>${esc(w.detail)}</p>` : ""}</li>`).join("");
+    }).catch(() => { const s = $("#reserve-pours"); if (s) s.hidden = true; });
   }
 
   // Home: press card, from S.press
@@ -194,23 +195,48 @@
   if (wineLines) wineLines.innerHTML = S.wine
     .map((w) => `<li><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></li>`).join("");
 
-  // Menu page: one section per menu group, with a sticky tab bar that follows your scroll
-  // Menu page: the wine list (wine-list.js), grouped like the printed menu.
-  // On wide screens each section is split into two even columns; a list that
-  // runs over carries on under "continued", like the printed menu.
+  // Menu page: the wine list, loaded from cocoa-vino-wine-menu.json (the one file to edit).
+  // The Reserve list comes first as its own section; each Reserve wine also shows in
+  // the regular section named in its "alsoIn". On wide screens each section splits into
+  // two even columns; a list that runs over carries on under "continued".
+  const loadWineMenu = () => fetch("cocoa-vino-wine-menu.json", { cache: "no-cache" }).then((r) => {
+    if (!r.ok) throw new Error("menu " + r.status);
+    return r.json();
+  });
+  // Turn the file into sections > groups > subgroups > wines, Reserve first
+  const wineSections = (data) => {
+    const own = (w, reserve) => ({ ...w, reserve });
+    const groupOf = (g, reserve) => ({
+      name: g.name || "",
+      subs: g.subgroups ? g.subgroups.map((s) => ({ name: s.name, items: s.items.map((w) => own(w, reserve)) })) : [{ name: "", items: (g.items || []).map((w) => own(w, reserve)) }],
+    });
+    const main = data.sections.map((s) => ({ id: s.id, title: s.title, intro: s.intro || "", groups: s.groups.map((g) => groupOf(g, false)) }));
+    const r = data.reserve;
+    r.groups.forEach((g) => g.items.forEach((w) => {
+      const a = w.alsoIn;
+      const sec = a && main.find((s) => s.id === a.section);
+      const grp = sec && sec.groups.find((x) => x.name === (a.group || ""));
+      const sub = grp && grp.subs.find((x) => x.name === (a.subgroup || ""));
+      if (sub) sub.items.push(own(w, true));
+    }));
+    return [{ id: r.id || "reserve", title: r.title, intro: r.tagline || "", isReserve: true, groups: r.groups.map((g) => groupOf(g, false)) }, ...main];
+  };
+
   const wines = $("#wines");
-  if (wines && window.WINE_LIST) {
-    const p = (v) => (v === "" || v == null ? "" : esc(v));
-    const head = (g, cont) => { const c = g.cols || ["Glass", "Bottle"]; return `<div class="wine-group-head${cont ? " is-cont" : ""}"><h3>${esc(g.name)}${cont ? " <span class=\"cont\">continued</span>" : ""}</h3><span>${esc(c[0])}</span><span>${esc(c[1])}</span></div>`; };
+  if (wines) {
+    const priceCell = (w) => w.price != null && w.price !== ""
+      ? `<span class="wine-price is-single" aria-label="${esc(w.price)}"><span></span><span></span><span class="pb">${esc(w.price)}</span></span>`
+      : `<span class="wine-price" aria-label="${esc(w.glass)} glass, ${esc(w.bottle)} bottle"><span class="pg">${esc(w.glass)}</span><span class="bar">|</span><span class="pb">${esc(w.bottle)}</span></span>`;
+    const head = (g, cont) => g.name ? `<div class="wine-group-head${cont ? " is-cont" : ""}"><h3>${esc(g.name)}${cont ? " <span class=\"cont\">continued</span>" : ""}</h3></div>` : (cont ? "" : `<div class="wine-group-head is-blank"></div>`);
     const sub = (name, cont) => `<h4>${esc(name)}${cont ? " continued" : ""}</h4>`;
-    const row = (w) => `<div class="wine-row"><div class="wine-name"><strong>${esc(w.name)}</strong>${w.note ? `<span class="wine-note">${esc(w.note)}</span>` : ""}</div><span class="wine-price">${p(w.glass)}</span><span class="wine-price">${p(w.bottle)}</span></div>`;
+    const row = (w) => `<div class="wine-row${w.reserve ? " from-reserve" : ""}"><div class="wine-name"><strong>${esc(w.name)}</strong>${w.reserve ? ' <span class="wine-tag">Reserve</span>' : ""}${w.detail ? `<span class="wine-note">${esc(w.detail)}</span>` : ""}</div>${priceCell(w)}</div>`;
     // Flatten a section into a list of tokens: group heads, sub heads and wines
     const tokens = (sec, q) => {
       const out = [];
       sec.groups.forEach((g) => {
         const gt = [];
         g.subs.forEach((s) => {
-          const items = s.items.filter((w) => !q || (w.name + " " + w.note).toLowerCase().includes(q));
+          const items = s.items.filter((w) => !q || (w.name + " " + (w.detail || "")).toLowerCase().includes(q));
           if (!items.length) return;
           if (s.name) gt.push({ t: "s", g, s });
           items.forEach((w) => gt.push({ t: "i", g, s, w }));
@@ -219,81 +245,106 @@
       });
       return out;
     };
-    // Groups with a single price (beer, spritzers) show it in the right-hand column
-    const html = (tk) => tk.t === "g" ? head(tk.g) : tk.t === "s" ? sub(tk.s.name) : row(tk.g.cols && tk.g.cols[0] === "" ? { ...tk.w, glass: "", bottle: tk.w.glass } : tk.w);
+    const html = (tk) => tk.t === "g" ? head(tk.g) : tk.t === "s" ? sub(tk.s.name) : row(tk.w);
     const wide = () => matchMedia("(min-width: 901px)").matches;
 
-    // Build every section's shell once
-    wines.innerHTML = window.WINE_LIST.map((sec, n) => `
-      <section class="section wine-section${n % 2 ? " section-dark" : ""}${sec.id === "reserve" ? " is-reserve" : ""}" id="${esc(sec.id)}">
-        <div class="wine-inner">
-          <div class="wine-section-head"><h2>${esc(sec.title)}</h2><p class="menu-intro">${esc(sec.intro)}</p></div>
-          <div class="wine-cols"></div>
-        </div>
-      </section>`).join("");
+    loadWineMenu().then((data) => {
+      const SECS = wineSections(data);
+      const key = $("#price-key");
+      if (key && data.priceKey) key.textContent = data.priceKey;
+      // Tabs: one per section, then the food tab already in the page
+      const tabBar = $(".menu-tabs");
+      if (tabBar) tabBar.insertAdjacentHTML("afterbegin", SECS.map((s) => `<a href="#${esc(s.id)}">${esc(s.isReserve ? "Reserve" : s.title.replace(/ Wine$/, ""))}</a>`).join(""));
 
-    const layout = (q) => {
-      let hits = 0;
-      window.WINE_LIST.forEach((sec) => {
-        const el = document.getElementById(sec.id);
-        const cols = el.querySelector(".wine-cols");
-        const tk = tokens(sec, q);
-        hits += tk.filter((x) => x.t === "i").length;
-        el.hidden = !tk.length;
-        if (!tk.length) { cols.innerHTML = ""; return; }
-        // Measure every token in one column at the real column width
-        cols.className = "wine-cols is-measuring";
-        cols.innerHTML = `<div class="wine-col">${tk.map(html).join("")}</div>`;
-        if (!wide()) { cols.className = "wine-cols"; return; }
-        const kids = [...cols.firstElementChild.children];
-        const tops = kids.map((k) => k.getBoundingClientRect().top);
-        const end = cols.firstElementChild.getBoundingClientRect().bottom;
-        const h = kids.map((k, i) => (i + 1 < kids.length ? tops[i + 1] : end) - tops[i]);
-        const total = h.reduce((a, b) => a + b, 0);
-        const contH = h[0] || 60;
-        // Best split: only before a wine or a new group, never leaving a header alone
-        let best = tk.length, bestDiff = Infinity, run = 0;
-        for (let k = 1; k < tk.length; k++) {
-          run += h[k - 1];
-          const prev = tk[k - 1], cur = tk[k];
-          if (prev.t !== "i") continue;
-          if (cur.t === "s") continue;
-          const right = total - run + (cur.t === "i" ? contH : 0);
-          const diff = Math.abs(run - right);
-          if (diff < bestDiff) { bestDiff = diff; best = k; }
-        }
-        const left = tk.slice(0, best), rightTk = tk.slice(best);
-        let carry = "";
-        if (rightTk.length && rightTk[0].t === "i") {
-          const first = rightTk[0];
-          carry = head(first.g, true);
-          const prevSub = left[left.length - 1].s;
-          if (first.s.name && prevSub === first.s) carry += sub(first.s.name, true);
-        }
-        cols.className = "wine-cols is-split";
-        cols.innerHTML = `<div class="wine-col">${left.map(html).join("")}</div><div class="wine-col">${carry}${rightTk.map(html).join("")}</div>`;
-        // Even out the last bit (less than one wine) so both columns end on the same
-        // line: spread the gap as a few extra pixels of space between the wines.
-        const [cl, cr] = cols.children;
-        const lastBottom = (c) => { const r = c.querySelectorAll(".wine-row"); return r.length ? r[r.length - 1].getBoundingClientRect().bottom : 0; };
-        const gap = lastBottom(cl) - lastBottom(cr);
-        const short = gap > 0 ? cr : cl, n = short.querySelectorAll(".wine-row").length;
-        if (n && Math.abs(gap) / n <= 24) short.style.setProperty("--row-extra", (Math.abs(gap) / n / 2).toFixed(2) + "px");
+      wines.innerHTML = SECS.map((sec, n) => `
+        <section class="section wine-section${n % 2 ? " section-dark" : ""}${sec.isReserve ? " is-reserve" : ""}" id="${esc(sec.id)}">
+          <div class="wine-inner">
+            <div class="wine-section-head"><h2>${esc(sec.title)}</h2>${sec.intro ? `<p class="menu-intro">${esc(sec.intro)}</p>` : ""}</div>
+            <div class="wine-cols"></div>
+          </div>
+        </section>`).join("");
+
+      const layout = (q) => {
+        let hits = 0;
+        SECS.forEach((sec) => {
+          const el = document.getElementById(sec.id);
+          const cols = el.querySelector(".wine-cols");
+          const tk = tokens(sec, q);
+          hits += tk.filter((x) => x.t === "i").length;
+          el.hidden = !tk.length;
+          if (!tk.length) { cols.innerHTML = ""; return; }
+          // Measure every token in one column at the real column width
+          cols.className = "wine-cols is-measuring";
+          cols.innerHTML = `<div class="wine-col">${tk.map(html).join("")}</div>`;
+          if (!wide()) { cols.className = "wine-cols"; return; }
+          const kids = [...cols.firstElementChild.children];
+          const tops = kids.map((k) => k.getBoundingClientRect().top);
+          const end = cols.firstElementChild.getBoundingClientRect().bottom;
+          const h = kids.map((k, i) => (i + 1 < kids.length ? tops[i + 1] : end) - tops[i]);
+          const total = h.reduce((a, b) => a + b, 0);
+          const contH = h[0] || 60;
+          // Best split: only before a wine or a new group, never leaving a header alone
+          let best = tk.length, bestDiff = Infinity, run = 0;
+          for (let k = 1; k < tk.length; k++) {
+            run += h[k - 1];
+            const prev = tk[k - 1], cur = tk[k];
+            if (prev.t !== "i") continue;
+            if (cur.t === "s") continue;
+            const right = total - run + (cur.t === "i" ? contH : 0);
+            const diff = Math.abs(run - right);
+            if (diff < bestDiff) { bestDiff = diff; best = k; }
+          }
+          const left = tk.slice(0, best), rightTk = tk.slice(best);
+          let carry = "";
+          if (rightTk.length && rightTk[0].t === "i") {
+            const first = rightTk[0];
+            carry = head(first.g, true);
+            const prevSub = left[left.length - 1].s;
+            if (first.s.name && prevSub === first.s) carry += sub(first.s.name, true);
+          }
+          cols.className = "wine-cols is-split";
+          cols.innerHTML = `<div class="wine-col">${left.map(html).join("")}</div><div class="wine-col">${carry}${rightTk.map(html).join("")}</div>`;
+          // Even out the last bit (less than one wine) so both columns end on the same
+          // line: spread the gap as a few extra pixels of space between the wines.
+          const [cl, cr] = cols.children;
+          const lastBottom = (c) => { const r = c.querySelectorAll(".wine-row"); return r.length ? r[r.length - 1].getBoundingClientRect().bottom : 0; };
+          const gap = lastBottom(cl) - lastBottom(cr);
+          const short = gap > 0 ? cr : cl, n = short.querySelectorAll(".wine-row").length;
+          if (n && Math.abs(gap) / n <= 24) short.style.setProperty("--row-extra", (Math.abs(gap) / n / 2).toFixed(2) + "px");
+        });
+        return hits;
+      };
+
+      const search = $("#wine-search"), count = $("#search-count");
+      const run = () => {
+        const q = search ? search.value.trim().toLowerCase() : "";
+        const hits = layout(q);
+        if (count) count.textContent = q ? (hits ? `${hits} match${hits === 1 ? "" : "es"} found` : "No match. Ask the bar, the Reserve list changes often.") : "";
+      };
+      run();
+      if (search) search.addEventListener("input", run);
+      let rt, lastW = innerWidth;
+      addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(run, 150); });
+      if (document.fonts) document.fonts.ready.then(run);
+      watchMenuTabs();
+      // Arriving at menu.html#red etc.: jump once the sections exist
+      if (location.hash) { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); }
+    }).catch(() => {
+      wines.innerHTML = `<section class="section"><div class="wine-inner"><p class="menu-error">The wine list didn't load. Please refresh, or call us and we'll read you tonight's pours.</p></div></section>`;
+      watchMenuTabs();
+    });
+  }
+
+  // Menu page: highlight the tab for the section on screen
+  function watchMenuTabs() {
+    const tabs = $$(".menu-tabs a");
+    if (!tabs.length || !("IntersectionObserver" in window)) return;
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) tabs.forEach((t) => t.classList.toggle("active", t.getAttribute("href") === "#" + en.target.id));
       });
-      return hits;
-    };
-
-    const search = $("#wine-search"), count = $("#search-count");
-    const run = () => {
-      const q = search.value.trim().toLowerCase();
-      const hits = layout(q);
-      count.textContent = q ? (hits ? `${hits} match${hits === 1 ? "" : "es"} found` : "No match. Ask the bar, the Reserve list changes often.") : "";
-    };
-    run();
-    search.addEventListener("input", run);
-    let rt, lastW = innerWidth;
-    addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(run, 150); });
-    if (document.fonts) document.fonts.ready.then(run);
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    $$(".menu-section, .wine-section").forEach((s) => spy.observe(s));
   }
 
   const menu = $("#menu");
@@ -331,13 +382,6 @@
       </section>`;
     const bites = menu.querySelector(".bites");
     if (bites) bites.style.setProperty("--rows", Math.ceil(f.bites.length / 2));
-    const tabs = $$(".menu-tabs a");
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) tabs.forEach((t) => t.classList.toggle("active", t.getAttribute("href") === "#" + en.target.id));
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    $$(".menu-section, .wine-section").forEach((s) => spy.observe(s));
   }
 
   // Events page: full calendar with filters
