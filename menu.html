@@ -22,7 +22,7 @@
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261031a">
+  <link rel="stylesheet" href="styles.css?v=20261123b">
 </head>
 <body data-page="menu">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -52,13 +52,31 @@
 </section>
 
 <nav class="menu-tabs" aria-label="Menu sections">
-  <a href="#champagne">Champagne & Sparkling</a>
-  <a href="#cult">Cult & Local</a>
-  <a href="#glass">By the Glass</a>
-  <a href="#bottle">Bottles & To Go</a>
+  <a href="#reserve">Reserve</a>
+  <a href="#champagne">Champagne</a>
+  <a href="#sparkling">Sparkling</a>
+  <a href="#white">White</a>
+  <a href="#rose">Rosé</a>
+  <a href="#red">Red</a>
+  <a href="#dessert">Dessert & Beer</a>
   <a href="#bites">Charcuterie Boards, Bites & Chocolates</a>
 </nav>
 
+<section class="section glass-band">
+  <div class="glass-inner">
+    <div class="glass-how">
+      <h2>Glass or bottle, your call</h2>
+      <p>Every wine on this list comes by the glass or the bottle, Reserve list included. Our Coravin pours through the cork, so you can try a glass of anything. Love it? Take a bottle home from our wine shop.</p>
+    </div>
+    <div class="glass-find">
+      <label for="wine-search">Find a wine</label>
+      <input id="wine-search" type="search" placeholder="Try Kosta Browne, Pinot, Sancerre" autocomplete="off">
+      <p class="search-count" id="search-count" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<div id="wines"></div>
 <div id="menu"></div>
 
 <section class="section section-dark">
@@ -97,7 +115,8 @@
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261031a"></script>
-<script src="main.js?v=20261031a"></script>
+<script src="wine-list.js?v=20261123b"></script>
+<script src="content.js?v=20261123b"></script>
+<script src="main.js?v=20261123b"></script>
 </body>
 </html>

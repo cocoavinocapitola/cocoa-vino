@@ -349,6 +349,41 @@ p { margin: 0 0 1em; }
 .prices { display: flex; gap: 1.2rem; white-space: nowrap; font-weight: 600; }
 .price-label { font-weight: 500; }
 
+/* Menu page: glass-or-bottle band and search */
+.glass-band { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.glass-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center; }
+.glass-how p { font-size: 1.12rem; margin: 0; }
+.glass-find label { display: block; font: 500 1rem var(--caps); letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin-bottom: .5rem; }
+.glass-find input { width: 100%; padding: .9em 1.1em; font: 1.05rem var(--sans); border: 1.5px solid #d8cbbb; border-radius: 2px; background: #fff; color: var(--ink); }
+.glass-find input:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(201, 163, 92, .25); }
+.search-count { min-height: 1.4em; margin: .5rem 0 0; font-weight: 600; color: #7d5a1e; }
+
+/* Menu page: the wine list */
+.wine-section { scroll-margin-top: 130px; }
+.wine-inner { max-width: 1200px; margin: 0 auto; }
+.wine-section-head { max-width: 760px; margin-bottom: 2.2rem; }
+.wine-groups { columns: 2; column-gap: 4.5rem; }
+.wine-group { break-inside: avoid; margin-bottom: 2.4rem; }
+.wine-group-head { display: grid; grid-template-columns: 1fr 4.6rem 4.6rem; align-items: end; gap: .5rem; padding-bottom: .5rem; border-bottom: 2px solid var(--gold); margin-bottom: .3rem; }
+.wine-group-head h3 { font-size: 1.5rem; margin: 0; }
+.wine-group-head span { font: 500 .95rem var(--caps); letter-spacing: .06em; text-transform: uppercase; text-align: right; color: #7d5a1e; }
+.section-dark .wine-group-head span { color: var(--gold-2); }
+.wine-group h4 { font: 500 1rem var(--caps); letter-spacing: .14em; text-transform: uppercase; color: #7d5a1e; margin: 1.1rem 0 .2rem; }
+.section-dark .wine-group h4 { color: var(--gold-2); }
+.wine-rows { list-style: none; padding: 0; margin: 0; }
+.wine-rows li { display: grid; grid-template-columns: 1fr 4.6rem 4.6rem; gap: .5rem; align-items: baseline; padding: .55rem 0; border-bottom: 1px solid #ece3d4; }
+.section-dark .wine-rows li { border-color: rgba(201, 163, 92, .18); }
+.wine-name strong { font-weight: 600; }
+.wine-note { display: block; color: var(--muted); font-size: .95rem; }
+.section-dark .wine-note { color: rgba(248, 241, 231, .72); }
+.wine-price { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.is-reserve { background: radial-gradient(ellipse at 80% 0%, rgba(201, 163, 92, .2), transparent 55%), linear-gradient(160deg, #141d3a, #070b17); color: var(--cream); }
+.is-reserve .wine-group-head span, .is-reserve .wine-group h4 { color: var(--gold-2); }
+.is-reserve .wine-note { color: rgba(248, 241, 231, .72); }
+.is-reserve .wine-rows li { border-color: rgba(201, 163, 92, .22); }
+#bites { background: var(--paper); }
+@media (max-width: 900px) { .wine-groups { columns: 1; } .glass-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
 /* Private events band at the bottom of Home */
 .private-band { padding: 4.5rem 5vw; color: #fff; text-align: center;
   background: linear-gradient(180deg, rgba(10, 15, 31, .45), rgba(10, 15, 31, .8)), url("images/patio.jpg") center 42%/cover; }

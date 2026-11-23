@@ -58,15 +58,8 @@ window.SITE = {
     { title: "Wine shop", text: "Every bottle on the wall is for sale. Stop in and take one home, no table needed." },
   ],
 
-  // MENU PAGE. Add each wine as { name, region, note, glass, bottle }.
-  // name: producer and wine. region: e.g. "Napa Valley". note: one short line.
-  // glass / bottle: prices like "$18" (leave "" if not offered that way).
-  // A section with no wines yet shows its intro line and "Ask the bar what's open today."
+  // MENU PAGE food section. The wine list lives in wine-list.js.
   menu: [
-    { id: "champagne", title: "Champagne & Sparkling", intro: "Every Champagne on the wall is poured by the glass, Rare included. Try a glass of something most bars only sell by the bottle.", items: [] },
-    { id: "cult", title: "Cult Favorites & Local Picks", intro: "The hard-to-find bottles: cult California names like Kosta Browne, Rare Champagne, and our favorite Santa Cruz Mountains producers. Every one of them by the glass.", items: [] },
-    { id: "glass", title: "By the Glass, Any Bottle", intro: "Thanks to our Coravin, every bottle on the wall can be poured by the glass, without pulling the cork. Point at anything on the wall and try a glass.", items: [] },
-    { id: "bottle", title: "By the Bottle & To Go", intro: "Found a favorite by the glass? Take the whole bottle. We'll open it at the bar or on the patio, or wrap it up for you to take home.", items: [] },
     { id: "bites", title: "Charcuterie Boards, Bites & Chocolates", image: "images/board.jpg", imageAlt: "A cheese, charcuterie and chocolate board with two glasses of red wine at Cocoa Vino",
       intro: "Wine needs a wingman. Build a board for the table, grab a few bites for the fire pit, and save room for chocolates.", items: [
       { name: "Cheese board", region: "", note: "A spread of soft, aged and blue cheeses with crackers, honey and fruit.", glass: "", bottle: "" },   // add price

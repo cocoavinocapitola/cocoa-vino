@@ -122,11 +122,53 @@
     .map((w) => `<li><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></li>`).join("");
 
   // Menu page: one section per menu group, with a sticky tab bar that follows your scroll
+  // Menu page: the wine list (wine-list.js), grouped like the printed menu
+  const wines = $("#wines");
+  if (wines && window.WINE_LIST) {
+    const p = (v) => (v === "" || v == null ? "" : esc(v));
+    const row = (w) => `
+      <li data-search="${esc((w.name + " " + w.note).toLowerCase())}">
+        <div class="wine-name"><strong>${esc(w.name)}</strong>${w.note ? `<span class="wine-note">${esc(w.note)}</span>` : ""}</div>
+        <span class="wine-price">${p(w.glass)}</span><span class="wine-price">${p(w.bottle)}</span>
+      </li>`;
+    wines.innerHTML = window.WINE_LIST.map((sec, n) => `
+      <section class="section wine-section${n % 2 ? " section-dark" : ""}${sec.id === "reserve" ? " is-reserve" : ""}" id="${esc(sec.id)}">
+        <div class="wine-inner">
+          <div class="wine-section-head">
+            <h2>${esc(sec.title)}</h2>
+            <p class="menu-intro">${esc(sec.intro)}</p>
+          </div>
+          <div class="wine-groups">${sec.groups.map((g) => `
+            <div class="wine-group">
+              <div class="wine-group-head"><h3>${esc(g.name)}</h3><span>Glass</span><span>Bottle</span></div>
+              ${g.subs.map((s) => `${s.name ? `<h4>${esc(s.name)}</h4>` : ""}<ul class="wine-rows">${s.items.map(row).join("")}</ul>`).join("")}
+            </div>`).join("")}
+          </div>
+        </div>
+      </section>`).join("");
+    // Search: show only matching wines, hide empty groups and sections
+    const search = $("#wine-search"), count = $("#search-count");
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      let hits = 0;
+      $$("#wines li").forEach((li) => { const on = !q || li.dataset.search.includes(q); li.hidden = !on; if (on) hits++; });
+      $$("#wines .wine-rows").forEach((ul) => {
+        const any = [...ul.children].some((li) => !li.hidden);
+        ul.hidden = !any;
+        const h = ul.previousElementSibling;
+        if (h && h.tagName === "H4") h.hidden = !any;
+      });
+      $$("#wines .wine-group").forEach((g) => { g.hidden = !g.querySelector("li:not([hidden])"); });
+      $$("#wines .wine-section").forEach((s) => { s.hidden = !s.querySelector("li:not([hidden])"); });
+      count.textContent = q ? (hits ? `${hits} wine${hits === 1 ? "" : "s"} found` : "No match. Ask the bar, the Reserve list changes often.") : "";
+    });
+  }
+
   const menu = $("#menu");
   if (menu) {
     const price = (label, v) => v ? `<span class="price"><span class="price-label">${label}</span> ${esc(v)}</span>` : "";
-    menu.innerHTML = S.menu.map((sec, n) => `
-      <section class="section menu-section${n % 2 ? " section-dark" : ""}" id="${esc(sec.id)}">
+    menu.innerHTML = S.menu.map((sec) => `
+      <section class="section menu-section" id="${esc(sec.id)}">
         <div class="menu-inner">
           <h2>${esc(sec.title)}</h2>
           ${sec.image ? `<img class="menu-photo" src="${esc(sec.image)}" alt="${esc(sec.imageAlt || "")}" loading="lazy">` : ""}
@@ -145,7 +187,7 @@
         if (en.isIntersecting) tabs.forEach((t) => t.classList.toggle("active", t.getAttribute("href") === "#" + en.target.id));
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    $$(".menu-section").forEach((s) => spy.observe(s));
+    $$(".menu-section, .wine-section").forEach((s) => spy.observe(s));
   }
 
   // Events page: full calendar with filters

@@ -11,7 +11,7 @@ Top menu: Home · Events · Menu · Visit. Private Events sits at the bottom of 
 |---|---|---|
 | Home | `index.html` | Hero (positioning line, Tonight / Reserve, today's hours and address), This Week (next 7 days from the events data), The Patio, Wine & Chocolate, Every Week, newsletter |
 | Events | `events.html` | Full calendar with filters, Tickets & RSVP links and Add to calendar |
-| Menu | `menu.html` | Champagne & Sparkling, By the Glass, By the Bottle & To Go, Charcuterie Boards, Bites & Chocolates, with a sticky section bar |
+| Menu | `menu.html` | The full wine list (Reserve, Champagne, Sparkling, White, Rosé, Red, Dessert & Beer) with glass and bottle prices, a search box, and Charcuterie Boards, Bites & Chocolates |
 | Contact | `contact.html` | Phone, location, Instagram, hours, and a form with options for questions, performers (bands, musicians), class teachers and event hosts, and private events |
 | Private Events | `private-events.html` | Patio parties, buyouts, birthdays, corporate, one request form |
 | Visit | `visit.html` | Hours, walk-ins vs reservations, parking, map, phone, Instagram |
@@ -21,7 +21,7 @@ The header, footer and phone bar are repeated in each page. If you change one, c
 ## Updating content
 After changing `styles.css`, `main.js` or `content.js`, bump the `?v=` number on their links in the HTML pages so visitors get the new version right away instead of a cached copy.
 
-Almost everything lives in **`content.js`**: phone, Instagram, hours, the weekly rhythm, the wine program, the chocolate line, and every event.
+The wine list lives in **`wine-list.js`** (copy a line to add a wine, delete a line to remove one). Almost everything else lives in **`content.js`**: phone, Instagram, hours, the weekly rhythm, the wine program, the chocolate line, and every event.
 
 **Events:** add `{ date, time, title, badge, text, image, link }`. They sort by date on their own, past dates disappear, and a series ("Multiple Dates") is one entry per date. Badges: Live Music, DJ, Bingo, Trivia, Paint Party, Class, Closed. A "Closed" entry marks that day closed everywhere on the site.
 
@@ -48,7 +48,7 @@ See **`BRAND.md`** for the names we always use, the voice rules and the look.
 - [ ] Confirm hours: closed Monday and Tuesday; Wednesday to Sunday listed as 3 pm to 10 pm
 - [ ] Confirm the Instagram handle (`cocoavinocapitola` is a guess from the event pages)
 - [ ] Name the chocolate maker in `content.js` (`chocolate`)
-- [ ] Add the real wine list to `menu` in `content.js` (name, region, note, glass and bottle price)
+- [x] Wine list: loaded from the printed menu and Reserve card into `wine-list.js`. Update it there when the list changes.
 - [ ] Connect the newsletter to Kit (below)
 - [ ] Connect the contact form: paste a Formspree or Basin URL into `contactFormAction`. Until then, it asks people to call.
 - [x] Email: cocoavinocapitola@gmail.com
