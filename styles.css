@@ -80,7 +80,7 @@ p { margin: 0 0 1em; }
 .hero-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1.4rem; justify-items: center; }
 .hero-inner { position: relative; z-index: 1; max-width: 880px; text-align: center; }
 .hero h1 { font-size: clamp(2.3rem, 3.8vw, 3.7rem); margin-bottom: .4em; text-wrap: balance; }
-.hero .lede { margin: 0 auto 1.6rem; }
+.hero .lede { margin: 0 auto 1.6rem; text-wrap: balance; }
 .hero .hero-cta { justify-content: center; }
 .hero-photo { order: -1; width: min(68vw, 1000px); aspect-ratio: 1448 / 680; overflow: hidden;
   /* Soft fade on the sides and bottom so the photo melts into the dark background */
