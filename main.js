@@ -29,9 +29,17 @@
   $$("[data-email-row]").forEach((li) => { li.hidden = !email; });
   $$("[data-handle]").forEach((a) => { const u = safeUrl(S.instagram); if (u) a.textContent = "@" + u.replace(/\/+$/, "").split("/").pop(); });
   $$("[data-insta-row]").forEach((li) => { li.hidden = !safeUrl(S.instagram); });
+  // Booking lives in one place: the Toast booking box on the Visit page. Every Reserve
+  // button links there (visit.html#reserve, set in the HTML). "Book online" only shows
+  // if the Toast box hasn't loaded after a few seconds, and then opens Toast directly.
   const reserveUrl = safeUrl(S.reservationsUrl);
-  if (reserveUrl) {
-    $$("[data-reserve], [data-reserve-online]").forEach((a) => { a.href = reserveUrl; a.target = "_blank"; a.rel = "noopener"; a.hidden = false; });
+  const bookOnline = $$("[data-reserve-online]");
+  if (bookOnline.length && reserveUrl) {
+    bookOnline.forEach((a) => { a.href = reserveUrl; a.target = "_blank"; a.rel = "noopener"; });
+    const widget = $("#toast-booking-widget");
+    setTimeout(() => {
+      if (!widget || !widget.children.length) bookOnline.forEach((a) => { a.hidden = false; });
+    }, 6000);
   }
 
   // ---------- Nav ----------
