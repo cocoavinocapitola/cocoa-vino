@@ -409,7 +409,7 @@ p { margin: 0 0 1em; }
 .section-dark .wine-group-head > span { color: var(--gold-2); }
 .wine-col h4 { font: 500 1rem var(--caps); letter-spacing: .14em; text-transform: uppercase; color: #7d5a1e; margin: 0; padding: 1.1rem 0 .2rem; }
 .section-dark .wine-col h4 { color: var(--gold-2); }
-.wine-row { display: grid; grid-template-columns: 1fr 4.6rem 4.6rem; gap: .5rem; align-items: baseline; padding: .55rem 0; border-bottom: 1px solid #ece3d4; }
+.wine-row { display: grid; grid-template-columns: 1fr 4.6rem 4.6rem; gap: .5rem; align-items: baseline; padding: calc(.55rem + var(--row-extra, 0px)) 0; border-bottom: 1px solid #ece3d4; }
 .section-dark .wine-row { border-color: rgba(201, 163, 92, .18); }
 .wine-name strong { font-weight: 600; }
 .wine-note { display: block; color: var(--muted); font-size: .95rem; }

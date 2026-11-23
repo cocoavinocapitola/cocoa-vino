@@ -250,6 +250,13 @@
         }
         cols.className = "wine-cols is-split";
         cols.innerHTML = `<div class="wine-col">${left.map(html).join("")}</div><div class="wine-col">${carry}${rightTk.map(html).join("")}</div>`;
+        // Even out the last bit (less than one wine) so both columns end on the same
+        // line: spread the gap as a few extra pixels of space between the wines.
+        const [cl, cr] = cols.children;
+        const lastBottom = (c) => { const r = c.querySelectorAll(".wine-row"); return r.length ? r[r.length - 1].getBoundingClientRect().bottom : 0; };
+        const gap = lastBottom(cl) - lastBottom(cr);
+        const short = gap > 0 ? cr : cl, n = short.querySelectorAll(".wine-row").length;
+        if (n && Math.abs(gap) / n <= 24) short.style.setProperty("--row-extra", (Math.abs(gap) / n / 2).toFixed(2) + "px");
       });
       return hits;
     };
