@@ -77,8 +77,8 @@ p { margin: 0 0 1em; }
   padding: calc(var(--nav) + var(--photo) * .6) 1rem 4.5rem;
   background:
     linear-gradient(180deg, rgba(10, 15, 31, 0) 0, rgba(10, 15, 31, 0) calc(var(--nav) + var(--photo) * .44), rgba(7, 11, 23, .9) calc(var(--nav) + var(--photo) * .6), #070b17 calc(var(--nav) + var(--photo) * .78)),
-    radial-gradient(ellipse 62% 85% at 50% 30%, rgba(5, 8, 15, 0) 55%, rgba(5, 8, 15, .7) 100%),
-    url("images/hero-wide.jpg") center var(--nav) / auto var(--photo) no-repeat,
+    linear-gradient(90deg, #070b17 calc(50% - var(--photo) * .667), rgba(7, 11, 23, 0) calc(50% - var(--photo) * .667 + 160px), rgba(7, 11, 23, 0) calc(50% + var(--photo) * .667 - 160px), #070b17 calc(50% + var(--photo) * .667)),
+    url("images/interior.jpg") center var(--nav) / auto var(--photo) no-repeat,
     #070b17; }
 .hero-inner { position: relative; z-index: 1; max-width: 880px; }
 .hero h1 { font-size: clamp(2.2rem, 3.9vw, 3.5rem); text-shadow: 0 2px 30px rgba(0, 0, 0, .7); margin-bottom: .35em; }
