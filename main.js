@@ -91,26 +91,53 @@
   const monthDay = (d) => d.toLocaleString("en-US", { month: "short", day: "numeric" });
   const weekday = (d) => d.toLocaleString("en-US", { weekday: "long" });
 
-  // Home: This Week strip (next 7 days, every day filled in)
+  // Home: This Week strip. Regular closed days (no event) collapse into one
+  // muted line under the strip, so the strip always leads with an open day.
   const week = $("#week");
   if (week) {
-    week.innerHTML = Array.from({ length: 7 }, (_, n) => {
+    const cards = [], closedDays = [];
+    for (let n = 0; n < 7; n++) {
       const d = new Date(today.getTime() + n * 864e5);
       const evs = upcoming.filter((e) => +e.d === +d);
       const closure = evs.find((e) => e.group === "closed");
       const shows = evs.filter((e) => e.group !== "closed");
+      const regularOpen = !!S.hours[d.getDay()];
+      if (!shows.length && !regularOpen) { closedDays.push(weekday(d)); continue; }
       const label = n === 0 ? "Tonight" : n === 1 ? "Tomorrow" : weekday(d);
       const body = closure
         ? `<p class="day-title">Closed</p><p>${esc(closedName(closure))}</p>`
         : shows.length
           ? shows.map((e) => `<p class="day-title">${esc(e.title)}</p><p>${esc(plain(e.time))}</p>`).join("")
-          : hoursText(d) === "Closed"
-            ? `<p class="day-title">Closed</p><p>See you later this week</p>`
-            : `<p class="day-title">Wine bar & fire pit</p><p>${esc(hoursText(d))}</p>`;
+          : `<p class="day-title">Fire pit at sunset</p><p>${esc(hoursText(d))}</p>`;
       const link = shows[0] && safeUrl(shows[0].link);
-      return `<a class="day${n === 0 ? " is-today" : ""}${closure ? " is-closed" : ""}" href="${link ? esc(link) : "events.html"}" ${link ? 'target="_blank" rel="noopener"' : ""}>
-        <span class="day-name">${label}</span><span class="day-date">${monthDay(d)}</span>${body}</a>`;
-    }).join("");
+      cards.push(`<a class="day${n === 0 ? " is-today" : ""}${closure ? " is-closed" : ""}" href="${link ? esc(link) : "events.html"}" ${link ? 'target="_blank" rel="noopener"' : ""}>
+        <span class="day-name">${label}</span><span class="day-date">${monthDay(d)}</span>${body}</a>`);
+    }
+    week.style.setProperty("--n", cards.length || 1);
+    week.innerHTML = cards.join("");
+    const closedLine = $("#week-closed");
+    if (closedLine && closedDays.length) {
+      const list = closedDays.length === 1 ? closedDays[0] : closedDays.slice(0, -1).join(", ") + " and " + closedDays[closedDays.length - 1];
+      closedLine.textContent = "Closed " + list;
+      closedLine.hidden = false;
+    }
+  }
+
+  // Home: "Ask Rodney" section, from S.rodney. Until images/rodney.jpg exists,
+  // fall back to the bar photo so the page never shows a broken image.
+  const rodney = $("#rodney-inner");
+  if (rodney && S.rodney) {
+    const r = S.rodney;
+    rodney.innerHTML = `
+      <div>
+        <p class="coravin-kicker">${esc(r.kicker)}</p>
+        <h2>${esc(r.title)}</h2>
+        <p>${esc(r.body)}</p>
+        <a class="btn btn-ghost-dark" href="${esc(r.button.href)}">${esc(r.button.text)}</a>
+      </div>
+      <div class="about-photo"><img src="${esc(r.image)}" alt="${esc(r.imageAlt)}" loading="lazy"></div>`;
+    const img = rodney.querySelector("img");
+    img.addEventListener("error", () => { img.src = "images/bar.jpg"; img.alt = "The bar at Cocoa Vino, with gold arches and a gilded wine fridge"; }, { once: true });
   }
 
   // Home: Every Week + Wine lines
@@ -118,7 +145,7 @@
   if (rhythm) rhythm.innerHTML = S.weekly.map((w) => `
     <div class="beat"><span class="beat-day">${esc(w.day)}</span><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div>`).join("");
   const wineLines = $("#wine-lines");
-  if (wineLines) wineLines.innerHTML = [...S.wine, { title: "Charcuterie Boards, Bites & Chocolates", text: S.chocolate }]
+  if (wineLines) wineLines.innerHTML = S.wine
     .map((w) => `<li><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></li>`).join("");
 
   // Menu page: one section per menu group, with a sticky tab bar that follows your scroll

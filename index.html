@@ -8,10 +8,10 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#0a0f1f">
-  <title>Cocoa Vino | Wine Bar, Fire Pit Patio & Live Music in Capitola Village</title>
-  <meta name="description" content="Wine bar and wine shop where any bottle on the wall can be poured by the glass. Wine bar in the afternoon, fire pit at sunset, music at seven. Open Wednesday to Sunday: live music Friday to Sunday, DJ Thursdays, bingo and trivia Wednesdays. 312 Capitola Ave.">
-  <meta property="og:title" content="Cocoa Vino | Wine Bar, Fire Pit Patio & Live Music in Capitola Village">
-  <meta property="og:description" content="Wine bar in the afternoon, fire pit at sunset, music at seven. Open Wednesday to Sunday: live music Friday to Sunday, DJ Thursdays, bingo and trivia Wednesdays. 312 Capitola Ave.">
+  <title>Cocoa Vino | Every Bottle by the Glass, Fire Pit Patio & Live Music, Capitola Village</title>
+  <meta name="description" content="Wine bar in Capitola Village where every bottle on the wall pours by the glass. Fire pits on the patio, music most nights, vintage Champagne, Kosta Browne, Rare. Open Wednesday to Sunday, 312 Capitola Ave.">
+  <meta property="og:title" content="Cocoa Vino | Every Bottle by the Glass, Fire Pit Patio & Live Music, Capitola Village">
+  <meta property="og:description" content="Wine bar in Capitola Village where every bottle on the wall pours by the glass. Fire pits on the patio, music most nights, vintage Champagne, Kosta Browne, Rare. Open Wednesday to Sunday, 312 Capitola Ave.">
   <meta property="og:image" content="https://kendahansen.github.io/cocoa-vino/images/share.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -22,7 +22,7 @@
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261123j">
+  <link rel="stylesheet" href="styles.css?v=20261124a">
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -47,58 +47,78 @@
 
 <main id="main">
 <section class="hero">
-  <div class="hero-inner reveal">
-    <h1>Wine bar in the afternoon. Fire pit at sunset. Music at seven.</h1>
-    <p class="lede">Walk up from the beach and pour from the wall: any bottle, by the glass, thanks to our Coravin. Vintage Champagne, rare California, French and Tuscan wines, and charcuterie boards, bites and chocolates to go with your glass.</p>
-    <div class="hero-cta">
-      <a class="btn" href="#this-week">Tonight</a>
-      <a class="btn btn-ghost" data-reserve href="visit.html#reserve">Reserve</a>
+  <div class="hero-grid">
+    <div class="hero-inner reveal">
+      <h1>Every bottle on the wall, by the glass.</h1>
+      <p class="lede">Fire pits on the patio, music most nights, and vintage Champagne poured one glass at a time, a block from Capitola Beach.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#this-week">Tonight</a>
+        <a class="btn btn-ghost" data-reserve href="visit.html#reserve">Reserve</a>
+      </div>
+      <p class="hero-info"><span id="open-status" aria-live="polite"></span> · <a href="visit.html#hours">312 Capitola Ave</a></p>
     </div>
-    <p class="hero-info"><span id="open-status" aria-live="polite"></span> · <a href="visit.html#hours">312 Capitola Ave</a></p>
+    <div class="hero-photo">
+      <img src="images/hero.jpg" alt="The gilded Cocoa Vino sign and crystal sconces above a navy velvet banquette with blue and gold pillows" width="1448" height="680">
+    </div>
   </div>
+</section>
+
+<section id="coravin" class="coravin">
+  <div class="coravin-inner reveal">
+    <div class="about-photo"><img src="images/winewall.jpg" alt="The golden-lit wine wall at Cocoa Vino" loading="lazy"></div>
+    <div>
+      <p class="coravin-kicker">The Coravin pour</p>
+      <h2>Any bottle on the wall, by the glass</h2>
+      <p>Most bars pour a short list by the glass and sell the rest by the bottle. We pour the whole wall. The Coravin draws wine through the cork without pulling it, so a glass of Kosta Browne, Rare Champagne or Bruno Giacosa Barolo costs you one glass, not the bottle.</p>
+      <p>Love it? Take one home from the shop.</p>
+      <a class="btn" href="menu.html#reserve">See the Reserve list</a>
+      <p class="coravin-cred">Rated Exceptional by the <a href="https://guide.coravin.com/products/cocoa-vino" target="_blank" rel="noopener">Coravin Guide</a>: over 60 wines by the glass</p>
+    </div>
+  </div>
+</section>
+
+<!-- Rodney: text and photo come from "rodney" in content.js -->
+<section id="rodney" class="section rodney">
+  <div class="coravin-inner reveal" id="rodney-inner"></div>
 </section>
 
 <section id="this-week" class="section section-dark week-section">
   <div class="section-head reveal">
     <h2>This week</h2>
-    <p>Here's what's on over the next seven days.</p>
+    <p>What's on for the next seven days.</p>
   </div>
   <div class="week" id="week"></div>
+  <p class="week-closed" id="week-closed" hidden></p>
   <p class="center"><a class="btn btn-ghost" href="events.html">See the full calendar</a></p>
 </section>
 
 <section id="patio" class="patio">
   <img class="patio-img" src="images/patio-golden.jpg" alt="The wine-barrel fire table on the patio at golden hour, with cobalt planters and red flowers" loading="lazy">
   <div class="patio-text reveal">
-    <h2>The Patio</h2>
-    <p>Grab a seat at the fire pit when the sun starts to drop. The beach is just down the street, and the doors open right into the bar.</p>
+    <h2>The fire pit</h2>
+    <p>When the sun drops behind the village, this is where you want to be. Pull a chair up to the fire, keep the doors open to the bar, and let the night run.</p>
     <a class="btn" href="private-events.html">Book the patio for a party</a>
   </div>
+</section>
+
+<section id="every-week" class="section section-dark">
+  <div class="section-head reveal">
+    <h2>Every week</h2>
+    <p>Learn the rhythm and you'll always know where to be. Want to play or teach here? <a href="contact.html?topic=perform">Get in touch</a>.</p>
+  </div>
+  <div class="rhythm" id="rhythm"></div>
 </section>
 
 <section id="wine" class="section">
   <div class="wine-top reveal">
     <div class="wine-head">
-      <h2>Wine, Charcuterie Boards, Bites & Chocolates</h2>
-      <p class="wine-intro">Rare bottles poured by the glass, charcuterie boards for the table and chocolates to finish. Stay for a glass or take a bottle home.</p>
+      <h2>Wine, boards and chocolate</h2>
+      <p class="wine-intro">Champagne worth the drive, California and French bottles you won't find at the store, cheese and charcuterie for the table, and chocolate to finish.</p>
       <a class="btn btn-ghost-dark" href="menu.html">See the menu</a>
     </div>
     <div class="about-photo"><img src="images/rare.jpg" alt="Five bottles of Rare Champagne on a gold-lit shelf" loading="lazy"></div>
   </div>
   <ul class="wine-grid reveal" id="wine-lines"></ul>
-</section>
-
-<section id="coravin" class="coravin">
-  <div class="coravin-inner reveal">
-    <div class="about-photo"><img src="images/winewall.jpg" alt="The golden-lit wine wall, where any bottle can be poured by the glass" loading="lazy"></div>
-    <div>
-      <p class="coravin-kicker">The Coravin pour</p>
-      <h2>Any bottle on the wall, by the glass</h2>
-      <p>Most bars pour a short list by the glass and sell everything else by the bottle. We pour the whole wall. Our Coravin draws wine through the cork without opening the bottle, so you can try that Kosta Browne, Caymus or Rare Champagne one glass at a time.</p>
-      <p>Love it? Take the bottle home from our wine shop.</p>
-      <a class="btn" href="menu.html#reserve">See the Reserve list</a>
-    </div>
-  </div>
 </section>
 
 <section class="space" id="space" aria-label="Inside and out">
@@ -115,18 +135,10 @@
   <img alt="">
 </dialog>
 
-<section id="every-week" class="section section-dark">
-  <div class="section-head reveal">
-    <h2>Every week</h2>
-    <p>Learn the rhythm and you'll always know where to be. Want to play or teach here? <a href="contact.html?topic=perform">Get in touch</a>.</p>
-  </div>
-  <div class="rhythm" id="rhythm"></div>
-</section>
-
 <section id="newsletter" class="section section-cocoa">
   <div class="newsletter reveal">
-    <h2>Get the week's lineup before the village does.</h2>
-    <p>One short email: who's playing, which cause bingo is raising money for, and the Champagne we just opened.</p>
+    <h2>Know who's playing before the village does.</h2>
+    <p>One short email a week: the lineup, which cause bingo is raising money for, and what we just opened.</p>
     <form id="signup" class="signup" novalidate>
       <label class="sr-only" for="email">Email address</label>
       <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" maxlength="254" inputmode="email">
@@ -137,10 +149,11 @@
     <p class="privacy-note">We only use your email for this newsletter. We never sell or share it, and you can unsubscribe any time. <a href="privacy.html">Privacy</a></p>
   </div>
 </section>
+
 <section id="private-events" class="private-band">
   <div class="private-band-inner reveal">
     <h2>Private events</h2>
-    <p>Birthdays, rehearsal dinners, team nights or the whole bar. Book the patio or buy out the room.</p>
+    <p>Birthdays, rehearsal dinners, team nights, or the whole bar. Book the patio or buy out the room.</p>
     <a class="btn" href="private-events.html">Plan your event</a>
   </div>
 </section>
@@ -167,11 +180,10 @@
     <a data-social="facebook" target="_blank" rel="noopener" hidden>Facebook</a>
     <a href="privacy.html">Privacy</a>
   </nav>
-  <p class="award">Recommended by Restaurant Guru, 2026</p>
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261123j"></script>
-<script src="main.js?v=20261123j"></script>
+<script src="content.js?v=20261124a"></script>
+<script src="main.js?v=20261124a"></script>
 </body>
 </html>

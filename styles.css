@@ -72,16 +72,17 @@ p { margin: 0 0 1em; }
 /* Hero: the navy room with the gold Cocoa Vino sign */
 /* Hero: the photo sits at a fixed size under the header, and the words always start
    below the gilded sign, so they never cover it on any screen size. */
-.hero { --nav: 108px; --w: min(80vw, 1200px); --photo: calc(var(--w) * .4696);
-  position: relative; display: grid; place-items: start center; text-align: center; color: #fff;
-  padding: calc(var(--nav) + var(--photo) + 2.2rem) 1rem 4.5rem;
-  background:
-    linear-gradient(180deg, rgba(7, 11, 23, 0) 0, rgba(7, 11, 23, 0) calc(var(--nav) + var(--photo) * .9), #070b17 calc(var(--nav) + var(--photo))),
-    linear-gradient(90deg, #070b17 calc(50% - var(--w) / 2), rgba(7, 11, 23, 0) calc(50% - var(--w) / 2 + 140px), rgba(7, 11, 23, 0) calc(50% + var(--w) / 2 - 140px), #070b17 calc(50% + var(--w) / 2)),
-    url("images/hero.jpg") center var(--nav) / var(--w) auto no-repeat,
-    #070b17; }
-.hero-inner { position: relative; z-index: 1; max-width: 880px; }
-.hero h1 { font-size: clamp(2.2rem, 3.9vw, 3.5rem); text-shadow: 0 2px 30px rgba(0, 0, 0, .7); margin-bottom: .35em; }
+/* Hero: text on the left, the sign photo on the right in its own box, so the
+   words can never sit on the photo. Phones stack: photo band on top, text below. */
+.hero { position: relative; color: #fff; padding: calc(108px + 3.5rem) 5vw 4.5rem;
+  background: radial-gradient(ellipse at 80% 20%, rgba(52, 72, 150, .35), transparent 60%), #070b17; }
+.hero-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.15fr; gap: 3.5rem; align-items: center; }
+.hero-inner { position: relative; z-index: 1; max-width: 600px; }
+.hero h1 { font-size: clamp(2.3rem, 3.8vw, 3.7rem); margin-bottom: .4em; }
+.hero .lede { margin-left: 0; }
+.hero .hero-cta { justify-content: flex-start; }
+.hero-photo { aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(201, 163, 92, .45); box-shadow: 0 30px 60px rgba(0, 0, 0, .45); }
+.hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
 .lede { font-size: 1.2rem; max-width: 620px; margin: 0 auto 1.6rem; color: var(--cream); }
 .hero-info { margin: 1.4rem 0 0; font-size: 1.05rem; font-weight: 500; color: var(--cream); }
 .hero-info a { color: var(--gold-2); }
@@ -114,7 +115,8 @@ p { margin: 0 0 1em; }
 .split { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 
 /* This Week strip */
-.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: .8rem; max-width: 1300px; margin: 0 auto 2.5rem; }
+.week { display: grid; grid-template-columns: repeat(var(--n, 7), 1fr); gap: .8rem; max-width: 1300px; margin: 0 auto 1.2rem; }
+.week-closed { text-align: center; color: rgba(248, 241, 231, .65); font-weight: 500; margin: 0 0 2.2rem; }
 .day { display: block; text-decoration: none; padding: 1.2rem 1rem; border-radius: 2px; border: 1px solid var(--line-dark); color: var(--cream); transition: border-color .2s, transform .2s; }
 .day:hover { border-color: var(--gold); transform: translateY(-3px); }
 .day.is-today { background: linear-gradient(160deg, rgba(201, 163, 92, .22), rgba(201, 163, 92, .06)); border-color: var(--gold); }
@@ -140,7 +142,6 @@ p { margin: 0 0 1em; }
 .wine-grid li { padding: 1.6rem 0; border-top: 2px solid var(--gold); }
 .wine-grid h3 { font-size: 1.45rem; margin-bottom: .4rem; }
 .wine-grid p { margin: 0; font-size: 1.05rem; }
-.wine-grid li:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
 @media (max-width: 1000px) { .wine-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 800px) { .wine-top { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; } .wine-grid { grid-template-columns: 1fr; } }
 .about-photo { position: relative; isolation: isolate; }
@@ -227,7 +228,6 @@ p { margin: 0 0 1em; }
 /* Footer */
 .footer { background: radial-gradient(ellipse at 50% 0%, rgba(52, 72, 150, .25), transparent 60%), #05080f; border-top: 1px solid var(--line-dark); color: var(--cream); text-align: center; padding: 4rem 5vw 3rem; }
 .footer .brand-foot { display: inline-flex; }
-.award { display: inline-block; margin: .4rem 0 1rem; padding: .45em 1.1em; border: 1px solid var(--gold); color: var(--gold-2); font: 500 .95rem var(--caps); letter-spacing: .14em; text-transform: uppercase; }
 .footer nav a { font: 500 1rem var(--caps); letter-spacing: .16em; text-transform: uppercase; }
 .footer nav { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: 1rem 0; }
 .footer nav a, .footer p a { color: var(--cream); }
@@ -248,7 +248,9 @@ p { margin: 0 0 1em; }
 }
 
 /* Tablet */
+@media (max-width: 960px) and (min-width: 801px) { .hero-grid { grid-template-columns: 1fr; } .hero-inner { max-width: 680px; margin: 0 auto; text-align: center; } .hero .lede { margin: 0 auto 1.6rem; } .hero .hero-cta { justify-content: center; } .hero-photo { order: -1; } }
 @media (max-width: 1100px) {
+  .hero-grid { gap: 2.5rem; }
   .nav { gap: 1rem; padding-left: 3vw; padding-right: 3vw; }
   .nav-group { gap: 1.1rem; }
   .nav-group a:not(.btn) { font-size: .95rem; letter-spacing: .1em; }
@@ -276,14 +278,14 @@ p { margin: 0 0 1em; }
   .nav.open .nav-left { padding-top: 1rem; border-top: 1px solid var(--line-dark); }
   .nav-group a:not(.btn) { font-size: 1.15rem; }
   .nav-right { justify-self: start; padding-bottom: .8rem; }
-  /* Hero: the sign as a photo band on top, words below */
-  .hero { min-height: auto; padding: calc(76px + 64vw) 16px 6rem;
-    background-image: linear-gradient(180deg, rgba(10, 15, 31, .5) 0, rgba(10, 15, 31, 0) 70px, rgba(10, 15, 31, 0) calc(76px + 40vw), #0a0f1f calc(76px + 64vw)),
-      url("images/interior.jpg"), linear-gradient(180deg, #0a0f1f, #05080f);
-    background-size: 100% 100%, 150% auto, 100% 100%; background-position: 0 0, 50% 76px, 0 0; }
+  /* Hero: photo band on top, words below */
+  .hero { padding: 76px 0 3rem; }
+  .hero-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .hero-photo { order: -1; aspect-ratio: 16 / 9; border: 0; border-bottom: 1px solid rgba(201, 163, 92, .45); box-shadow: none; }
+  .hero-inner { max-width: none; padding: 0 16px; text-align: center; }
+  .hero .hero-cta { justify-content: center; }
   .hero h1 { font-size: 2.15rem; }
-  @media (max-height: 700px) { .hero { padding-top: calc(76px + 40vw); padding-bottom: 5.5rem; background-size: 100% 100%, 120% auto, 100% 100%; } .hero h1 { font-size: 1.95rem; } .lede { font-size: 1rem; margin-bottom: 1rem; } }
-  .lede { font-size: 1.05rem; margin-bottom: 1.2rem; }
+  .hero .lede { margin: 0 auto 1.2rem; font-size: 1.05rem; }
   .hero-info { margin-top: 1rem; }
   .section { padding: 4rem 16px; }
   .page-head { padding: 8.5rem 16px 3rem; }
@@ -317,6 +319,15 @@ p { margin: 0 0 1em; }
 .coravin-kicker { font: 500 1rem var(--caps); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-2); margin-bottom: .8rem; }
 .coravin h2::after { content: ""; display: block; width: 64px; height: 3px; margin-top: 1.1rem; background: linear-gradient(90deg, var(--gold), var(--gold-2)); }
 .coravin p { font-size: 1.12rem; }
+.coravin .coravin-cred { display: inline-block; margin: 1.6rem 0 0; padding: .45em 1.1em; border: 1px solid var(--gold); color: var(--gold-2); font: 500 .95rem var(--caps); letter-spacing: .12em; text-transform: uppercase; }
+.coravin-cred a { color: var(--gold-2); }
+
+/* Ask Rodney (light section, photo on the right) */
+.rodney .coravin-kicker { color: #7d5a1e; }
+.rodney h2::after { content: ""; display: block; width: 64px; height: 3px; margin-top: 1.1rem; background: linear-gradient(90deg, var(--gold), var(--gold-2)); }
+.rodney p { font-size: 1.12rem; }
+.rodney .coravin-inner { grid-template-columns: 1.05fr 1fr; }
+@media (max-width: 800px) { .rodney .coravin-inner { grid-template-columns: 1fr; gap: 2.2rem; } .rodney .about-photo { order: -1; } }
 @media (max-width: 800px) { .coravin { padding: 4rem 16px; } .coravin-inner { grid-template-columns: 1fr; gap: 2.2rem; } }
 
 /* Inside & out photo band with lightbox */

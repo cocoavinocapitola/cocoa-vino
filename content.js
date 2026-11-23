@@ -42,21 +42,33 @@ window.SITE = {
 
   // The weekly rhythm (Home: "Every Week")
   weekly: [
-    { day: "Select Mondays", title: "Paint parties & classes", text: "Paint a layered wood piece or decorate a gingerbread house with a glass in hand. Supplies are on us." },
-    { day: "Wednesdays", title: "Bingo & trivia", text: "Every bingo night raises money for a local cause. Trivia nights bring five rounds, prizes and a cheese board." },
-    { day: "Thursdays", title: "House DJ", text: "Chill house and jazzy grooves from 7 pm while the fire pit burns." },
-    { day: "Friday to Sunday", title: "Live music", text: "Local guitarists, jazz duos and Hawaiian harmonies, inside and on the patio." },
+    { day: "Select Mondays", title: "Paint parties and classes", text: "Paint a layered wood piece or build a gingerbread house, glass in hand. Supplies are on us." },
+    { day: "Wednesdays", title: "Bingo and trivia", text: "Bingo nights raise money for a local cause. Trivia brings five rounds, prizes and a cheese board." },
+    { day: "Thursdays", title: "House DJ", text: "Chill house and jazzy grooves from seven, with the fire going." },
+    { day: "Friday to Sunday", title: "Live music", text: "Guitarists, jazz duos, Hawaiian harmonies. Inside, and out on the patio." },
   ],
 
-  // Wine program lines (Home page "Wine & Chocolate")
+  // Wine program (Home: "Wine, boards and chocolate"). Keep it to six so the grid stays even.
   wine: [
-    { title: "Vintage Champagne", text: "Every Champagne on the wall is poured by the glass, Rare included. Try a glass of something most bars only sell by the case." },
-    { title: "Cult favorites", text: "Kosta Browne, Rare and the bottles collectors hunt for, right here in the village." },
-    { title: "California", text: "Napa Valley and Paso Robles, from names you know like Caymus and DAOU to hard-to-find small producers." },
-    { title: "France", text: "Crisp Sancerre for a sunny afternoon and classic French reds for after dark." },
-    { title: "Tuscany", text: "Tuscan reds to pour while the sun drops behind the village." },
-    { title: "Wine shop", text: "Every bottle on the wall is for sale. Stop in and take one home, no table needed." },
+    { title: "Vintage Champagne", text: "Every Champagne on the wall pours by the glass, Rare included." },
+    { title: "Cult California", text: "Kosta Browne and the bottles collectors chase, right here in the village." },
+    { title: "Napa and Paso", text: "Big reds from the valleys, from names you know to small producers you don't yet." },
+    { title: "France", text: "Sancerre for the afternoon, classic reds for after dark." },
+    { title: "Tuscany", text: "Tuscan reds to pour while the light goes gold." },
+    { title: "The shop", text: "Every bottle is for sale. Walk in, grab one, walk out. No table needed." },
   ],
+
+  // Home: "Ask Rodney" section
+  rodney: {
+    kicker: "The wine and chocolate guy",
+    title: "Ask Rodney what to pour",
+    body: "Rodney Wartzok is our sommelier, self-taught and allergic to the word \"curated.\" Tell him what you like and he'll pour something you haven't tried, then hand you the chocolate that goes with it.",
+    button: { text: "See the menu", href: "menu.html" },
+    // PHOTO STILL NEEDED: save a photo of Rodney as images/rodney.jpg.
+    // Until it exists, the section shows the bar photo instead.
+    image: "images/rodney.jpg",
+    imageAlt: "Rodney Wartzok behind the bar at Cocoa Vino",
+  },
 
   // MENU PAGE food (from the printed food menu). Prices as printed.
   food: {
@@ -81,7 +93,6 @@ window.SITE = {
       { name: "Dark Chocolate Macadamia Nuts", note: "", price: "12" },
     ],
   },
-  chocolate: "Build your own board from 12 cheeses and 12 charcuterie, add brie with fig jam or a white bean spread, and finish with dark chocolate macadamia nuts.",
 
   // Events. date: YYYY-MM-DD. Sorted automatically; past dates hide on their own.
   // badge: Live Music, DJ, Bingo, Trivia, Paint Party, Class or Closed.
