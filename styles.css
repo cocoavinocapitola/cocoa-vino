@@ -227,6 +227,13 @@ p { margin: 0 0 1em; }
 
 /* Contact */
 .split-top { align-items: start; }
+/* Visit: reserve buttons as an even block. Two side by side, the third full width
+   under them; if online booking is off, the two left share one row. */
+.visit-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.4rem 0 1rem; }
+.visit-cta .btn { justify-content: center; text-align: center; }
+.visit-cta .btn:last-child { grid-column: 1 / -1; }
+.visit-cta:has(> [hidden]) .btn:last-child { grid-column: auto; }
+@media (max-width: 520px) { .visit-cta { grid-template-columns: 1fr; } .visit-cta .btn:last-child { grid-column: auto; } }
 /* Contact: the note form stretches so both columns end on the same line */
 @media (min-width: 801px) { .contact-split { align-items: stretch; } }
 /* Visit: the map sits at the top beside Hours and stays in view while you scroll */
