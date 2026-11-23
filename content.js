@@ -26,7 +26,7 @@ window.SITE = {
   facebook: "",
   // Current booking page (Wix Table Reservations on the old site). Replace with the
   // OpenTable or Tock link when that is set up; this one stops working if the domain leaves Wix.
-  reservationsUrl: "https://www.cocoavinocapitola.com/reservations",
+  reservationsUrl: "https://toast.app/r/coco-vino-312-capitola-avenue",
 
   // 0 = Sunday ... 6 = Saturday. 24h times. null = closed that day.
   // Closed Monday and Tuesday. CONFIRM the other days (listed as 3 pm to 10 pm).
