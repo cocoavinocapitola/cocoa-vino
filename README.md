@@ -79,6 +79,7 @@ The preview is hidden from search engines. At launch:
 4. Plan for the Wix event and reservation pages the site links to (they stop working when the domain leaves Wix).
 
 ## Live site
+If the repo is ever made private, GitHub can switch Pages off. After making it public again, check Settings → Pages is on main / (root); the next push republishes the site.
 https://kendahansen.github.io/cocoa-vino/ (GitHub Pages: Settings → Pages → Deploy from a branch → main → / (root)). Every push to `main` republishes it.
 
 ## Hosting
