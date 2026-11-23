@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://toast.app https://*.toasttab.com; style-src 'self' 'unsafe-inline' https://toast.app https://*.toasttab.com; font-src 'self' https://toast.app https://*.toasttab.com; img-src 'self' data: https:; frame-src https://www.google.com https://toast.app https://*.toasttab.com; connect-src 'self' https:; form-action 'self' https:; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self' https:; form-action 'self' https:; base-uri 'self'; object-src 'none'">
   <!-- PREVIEW: keep out of search engines until launch on cocoavinocapitola.com (see README) -->
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -22,7 +22,7 @@
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261125p">
+  <link rel="stylesheet" href="styles.css?v=20261125q">
 </head>
 <body data-page="visit">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -61,16 +61,11 @@
 
       <h2 id="reserve">Walk in or reserve</h2>
       <p>Walk-ins are always welcome. Bringing a group, or want a seat at the fire pit? Call ahead and we'll hold it for you.</p>
-      <!-- Booking card: Toast's booking box (code from Toast) inside a frame that matches
-           the site's forms. "Book online" only appears if Toast's box doesn't load. -->
+      <!-- Booking card: the gold button opens Toast's booking page (reservationsUrl in content.js) -->
       <div class="booking-card">
         <p class="booking-kicker">Book a table</p>
-        <div class="booking-widget" id="toast-booking-widget"></div>
-        <script
-          src="https://toast.app/scripts/widgets/reserve.js"
-          data-restaurant-guid="bd820884-9bf3-4388-b309-4b39f2186c28">
-        </script>
-        <p class="booking-fallback"><a class="btn" data-reserve-online hidden>Book online</a></p>
+        <p class="booking-text">Pick your night, time and party size on our booking page.</p>
+        <a class="btn booking-btn" data-reserve href="visit.html#reserve">Reserve now</a>
         <p class="booking-alt">Prefer to call? <a data-phone data-phone-text hidden></a><span class="booking-sep" aria-hidden="true">·</span><a href="private-events.html">Private events</a></p>
       </div>
 
@@ -115,7 +110,7 @@
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261125p"></script>
-<script src="main.js?v=20261125p"></script>
+<script src="content.js?v=20261125q"></script>
+<script src="main.js?v=20261125q"></script>
 </body>
 </html>

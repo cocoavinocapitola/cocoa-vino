@@ -235,24 +235,14 @@ p { margin: 0 0 1em; }
 /* Contact */
 .split-top { align-items: start; }
 /* Visit: booking card. Same frame as the site's forms (white, gold top rule, soft
-   shadow), with Toast's booking box inside and the call / private event line under it. */
-.booking-card { max-width: 420px; margin: 1.4rem 0 1rem; padding: 1.1rem 1.2rem 1rem; background: #fff; border: 1px solid rgba(201, 163, 92, .45); border-top: 4px solid var(--gold); border-radius: 2px; box-shadow: 0 20px 50px rgba(10, 15, 31, .1); }
-.booking-kicker { margin: 0 0 .7rem; padding-bottom: .5rem; border-bottom: 1px solid #ece3d4; font: 600 1.05rem var(--caps); letter-spacing: .18em; text-transform: uppercase; color: #7d5a1e; }
-.booking-widget { max-width: 100%; max-height: min(460px, 55vh); overflow: auto; zoom: .8; }
-.booking-widget:empty { display: none; }
-.booking-widget iframe { display: block; width: 100% !important; max-width: 100%; border: 0; }
-.booking-fallback { margin: 0; }
-.booking-fallback:has(> [hidden]) { display: none; }
-.booking-alt { margin: .8rem 0 0; padding-top: .7rem; border-top: 1px solid #ece3d4; font-size: 1.05rem; color: var(--muted); }
+   shadow): a short line, one gold Reserve button, then call / private events. */
+.booking-card { max-width: 420px; margin: 1.4rem 0 1rem; padding: 1.1rem 1.3rem 1rem; background: #fff; border: 1px solid rgba(201, 163, 92, .45); border-top: 4px solid var(--gold); border-radius: 2px; box-shadow: 0 20px 50px rgba(10, 15, 31, .1); }
+.booking-kicker { margin: 0 0 .5rem; font: 600 1.05rem var(--caps); letter-spacing: .18em; text-transform: uppercase; color: #7d5a1e; }
+.booking-text { margin: 0 0 1rem; color: var(--muted); }
+.booking-btn { display: block; text-align: center; }
+.booking-alt { margin: 1rem 0 0; padding-top: .8rem; border-top: 1px solid #ece3d4; font-size: 1.05rem; color: var(--muted); }
 .booking-alt a { color: var(--ink); font-weight: 600; }
 .booking-sep { margin: 0 .6rem; color: var(--gold); }
-@media (max-width: 520px) { .booking-card { padding: 1.2rem 1rem 1rem; } .booking-sep { display: block; height: .3rem; overflow: hidden; color: transparent; } }
-/* Booking pop-up: the same card, centered over a dimmed page */
-.booking-dialog { width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; background: transparent; overflow: auto; }
-.booking-dialog::backdrop { background: rgba(7, 11, 23, .72); backdrop-filter: blur(3px); }
-.booking-dialog .booking-card { position: relative; margin: 0; }
-.booking-close { position: absolute; top: .35rem; right: .5rem; width: 2.6rem; height: 2.6rem; border: 0; background: none; font: 300 2.4rem/1 var(--sans); color: #7d5a1e; cursor: pointer; }
-.booking-close:hover { color: #7d5a1e; }
 /* Visit: reserve buttons as an even block. Two side by side, the third full width
    under them; if online booking is off, the two left share one row. */
 .visit-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.4rem 0 1rem; }

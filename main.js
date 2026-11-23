@@ -29,55 +29,12 @@
   $$("[data-email-row]").forEach((li) => { li.hidden = !email; });
   $$("[data-handle]").forEach((a) => { const u = safeUrl(S.instagram); if (u) a.textContent = "@" + u.replace(/\/+$/, "").split("/").pop(); });
   $$("[data-insta-row]").forEach((li) => { li.hidden = !safeUrl(S.instagram); });
-  // Booking: one Toast booking box. On the Visit page it sits in the "Walk in or reserve"
-  // card; on every other page, Reserve opens the same card as a pop-up, so booking is
-  // one click from anywhere. If Toast's box doesn't load, a "Book online" button
-  // appears after a few seconds and opens Toast directly.
+  // Booking: every Reserve button opens Toast's booking page in one click
+  // (reservationsUrl in content.js). Without it, they fall back to visit.html#reserve.
   const reserveUrl = safeUrl(S.reservationsUrl);
-  const toastSrc = "https://toast.app/scripts/widgets/reserve.js";
-  const watchToast = (widget, fallback) => {
-    if (!fallback || !reserveUrl) return;
-    fallback.href = reserveUrl; fallback.target = "_blank"; fallback.rel = "noopener";
-    setTimeout(() => { if (!widget || !widget.children.length) fallback.hidden = false; }, 6000);
-  };
-  const inlineWidget = $("#toast-booking-widget");
-  if (inlineWidget) watchToast(inlineWidget, $("[data-reserve-online]"));
-
-  let bookingDialog = null;
-  const openBooking = () => {
-    if (!bookingDialog) {
-      bookingDialog = document.createElement("dialog");
-      bookingDialog.className = "booking-dialog";
-      bookingDialog.setAttribute("aria-label", "Book a table");
-      bookingDialog.innerHTML = `
-        <div class="booking-card">
-          <button class="booking-close" type="button" aria-label="Close">&times;</button>
-          <p class="booking-kicker">Book a table</p>
-          <div class="booking-widget" id="toast-booking-widget"></div>
-          <p class="booking-fallback"><a class="btn" data-reserve-online hidden>Book online</a></p>
-          <p class="booking-alt">${tel ? `Prefer to call? <a href="tel:${esc(tel)}">${esc(S.phone)}</a><span class="booking-sep" aria-hidden="true">·</span>` : ""}<a href="private-events.html">Planning a private event?</a></p>
-        </div>`;
-      document.body.appendChild(bookingDialog);
-      const widget = bookingDialog.querySelector("#toast-booking-widget");
-      if (S.toastGuid) {
-        const s = document.createElement("script");
-        s.src = toastSrc;
-        s.setAttribute("data-restaurant-guid", S.toastGuid);
-        widget.after(s);
-      }
-      watchToast(widget, bookingDialog.querySelector("[data-reserve-online]"));
-      bookingDialog.querySelector(".booking-close").addEventListener("click", () => bookingDialog.close());
-      // Click on the dark backdrop closes it
-      bookingDialog.addEventListener("click", (e) => { if (e.target === bookingDialog) bookingDialog.close(); });
-    }
-    if (typeof bookingDialog.showModal === "function") bookingDialog.showModal();
-    else if (reserveUrl) window.open(reserveUrl, "_blank", "noopener");
-  };
-  $$("[data-reserve]").forEach((a) => a.addEventListener("click", (e) => {
-    if (inlineWidget) return; // Visit page: the link scrolls to the card on this page
-    e.preventDefault();
-    openBooking();
-  }));
+  if (reserveUrl) {
+    $$("[data-reserve]").forEach((a) => { a.href = reserveUrl; a.target = "_blank"; a.rel = "noopener"; });
+  }
 
   // ---------- Nav ----------
   const nav = $(".nav");

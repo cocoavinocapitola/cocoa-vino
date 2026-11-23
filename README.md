@@ -54,7 +54,7 @@ See **`BRAND.md`** for the names we always use, the voice rules and the look.
 - [ ] Connect the contact form: paste a Formspree or Basin URL into `contactFormAction`. Until then, it asks people to call.
 - [x] Email: cocoavinocapitola@gmail.com
 - [ ] Connect private event requests: paste a Formspree or Basin URL into `privateEventsFormAction`. Until then, the form asks guests to call.
-- [x] Reservations: one Toast booking box. On the Visit page it sits in the Walk in or reserve card; on every other page the Reserve buttons open the same card as a pop-up (one click). The Toast id is `toastGuid` in content.js. If the box does not load, a Book online button appears and opens `reservationsUrl` (content.js). Each page's security line (top of the file) allows toast.app and toasttab.com so the box can load.
+- [x] Reservations: every Reserve button opens Toast's booking page in one click (`reservationsUrl` in content.js). The Visit page has a small "Book a table" card with the same button.
 - [ ] Priority photos still wanted: fire pit at dusk with people, the room full on a music night, a single pour of Champagne, the village or beach from the door, the chocolate
 - [x] Rodney photo: `images/rodney.jpg` (replace the file to change it).
 - [ ] Logo: the wordmark (COCOA VINO / CAPITOLA VILLAGE in Cinzel) is the logo for now, with `images/monogram.svg` as the browser icon. Swap in an official logo file if there is one.
