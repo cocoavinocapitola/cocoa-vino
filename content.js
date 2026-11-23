@@ -70,6 +70,8 @@ window.SITE = {
     badge: "images/coravin-badge.png",
     badgeAlt: "The Coravin Guide Three Glass badge",
     linkText: "See our Coravin Guide listing",
+    // Second award, shown as a small gold badge under the Coravin card
+    guru: { title: "Recommended", source: "Restaurant Guru 2026", url: "https://restaurantguru.com/Cocoa-Vino-Capitola" },
     listLine: null, // e.g. { before: 'One of 35 "three glass" wine bars worldwide on the ', link: "Coravin Guide's 2025 list", after: ".", url: "https://guide.coravin.com/blogs/wine-destinations/three-glass-rated-wine-venues-worldwide" }
   },
 
