@@ -104,7 +104,7 @@ p { margin: 0 0 1em; }
 .page-head-patio { background: linear-gradient(180deg, rgba(10, 15, 31, .25), rgba(10, 15, 31, .65)), url("images/patio-bar.jpg") center 52%/cover; }
 .page-head-bar { background: linear-gradient(180deg, rgba(10, 15, 31, .3), rgba(10, 15, 31, .72)), url("images/bar.jpg") center 45%/cover; }
 .page-head-sign { background: linear-gradient(180deg, rgba(10, 15, 31, .35), rgba(10, 15, 31, .75)), url("images/interior.jpg") center 70%/cover; }
-.page-head-entrance { background: linear-gradient(180deg, rgba(10, 15, 31, .3), rgba(10, 15, 31, .72)), url("images/patio-fire.jpg") center 55%/cover; }
+.page-head-entrance { background: linear-gradient(180deg, rgba(10, 15, 31, .3), rgba(10, 15, 31, .72)), url("images/patio-table.jpg") center 55%/cover; }
 .page-head-room { background: linear-gradient(180deg, rgba(10, 15, 31, .35), rgba(10, 15, 31, .75)), url("images/interior.jpg") center 70%/cover; }
 
 /* Sections */
@@ -224,7 +224,7 @@ p { margin: 0 0 1em; }
 .map { aspect-ratio: 1; }
 .map-load { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem;
   border: 1.5px solid rgba(201, 163, 92, .5); border-radius: 2px; cursor: pointer; color: var(--cream); font: 500 1.05rem var(--sans);
-  background: linear-gradient(180deg, rgba(10, 15, 31, .55), rgba(10, 15, 31, .85)), url("images/patio-fire.jpg") center/cover; }
+  background: linear-gradient(180deg, rgba(10, 15, 31, .55), rgba(10, 15, 31, .85)), url("images/patio-table.jpg") center/cover; }
 .map-load:hover { border-color: var(--gold); }
 .map-load strong { font: 600 2rem var(--serif); color: var(--gold-2); }
 .map iframe { width: 100%; height: 100%; border: 0; border-radius: 2px; }
