@@ -227,6 +227,8 @@ p { margin: 0 0 1em; }
 
 /* Contact */
 .split-top { align-items: start; }
+/* Contact: the note form stretches so both columns end on the same line */
+@media (min-width: 801px) { .contact-split { align-items: stretch; } }
 /* Visit: the map sits at the top beside Hours and stays in view while you scroll */
 @media (min-width: 801px) { .visit-split .map { position: sticky; top: calc(108px + 2rem); } }
 .contact-list { list-style: none; padding: 0; margin: 0 0 1rem; font-size: 1.1rem; }
@@ -349,6 +351,12 @@ p { margin: 0 0 1em; }
 .guru-title { font: 600 1.15rem var(--caps); letter-spacing: .16em; text-transform: uppercase; color: var(--gold-2); }
 .guru-source { font: 500 1rem var(--sans); color: var(--cream); }
 .press-badge { display: block; width: 160px; height: 160px; object-fit: contain; margin: 0 auto 1.4rem; border-radius: 50%; }
+.press-seal { width: 196px; height: 196px; margin: 0 auto 1.4rem; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
+  background: radial-gradient(circle at 50% 35%, #1d2a52, #0a0f1f); color: var(--gold-2); border: 3px solid var(--gold); box-shadow: inset 0 0 0 5px #0a0f1f, inset 0 0 0 6px rgba(201, 163, 92, .6), 0 14px 30px rgba(10, 15, 31, .25); }
+.seal-top, .seal-bottom { font: 600 .95rem var(--caps); letter-spacing: .1em; text-transform: uppercase; line-height: 1.2; text-align: center; max-width: 150px; color: #fff; }
+.seal-bottom { color: var(--gold-2); }
+.seal-glasses { display: flex; gap: .35rem; }
+.seal-glasses svg { width: 18px; height: 30px; }
 .press-link { display: inline-block; margin-top: 1.2rem; color: #7d5a1e; font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
 .press-list a { color: #7d5a1e; }
 @media (max-width: 800px) { .press-card { padding: 2.2rem 1.4rem; } }

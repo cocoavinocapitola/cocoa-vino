@@ -157,8 +157,17 @@
       guruEl.hidden = false;
     }
   }
+  // Until the official badge file exists, show a badge drawn in the site's own style
   const badge = $(".press-badge");
-  if (badge) badge.addEventListener("error", () => badge.remove(), { once: true });
+  if (badge) badge.addEventListener("error", () => {
+    const glass = '<svg viewBox="0 0 24 40" aria-hidden="true"><path d="M4 2h16v10a8 8 0 0 1-16 0z" fill="currentColor"/><path d="M12 20v14M6 38h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>';
+    const d = document.createElement("span");
+    d.className = "press-seal";
+    d.setAttribute("role", "img");
+    d.setAttribute("aria-label", badge.alt);
+    d.innerHTML = `<span class="seal-top">The Coravin Guide</span><span class="seal-glasses">${glass}${glass}${glass}</span><span class="seal-bottom">Three Glass 2026</span>`;
+    badge.replaceWith(d);
+  }, { once: true });
 
   // Home: "Ask Rodney" section, from S.rodney. Until images/rodney.jpg exists,
   // fall back to the bar photo so the page never shows a broken image.
