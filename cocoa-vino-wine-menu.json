@@ -1,6 +1,6 @@
 {
   "_howto": "Edit prices, names and details here and the Menu page updates. glass and bottle are shown as glass | bottle; items with one price use \"price\". \"featured\": true on a Reserve wine puts it on the home page (up to six). Each Reserve wine also appears in the section and group named in \"alsoIn\", so its price is edited in one place.",
-  "priceKey": "glass | bottle",
+  "priceKey": "Prices: glass | bottle",
   "reserve": {
     "id": "reserve",
     "title": "The Reserve List",
