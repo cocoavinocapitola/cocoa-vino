@@ -90,6 +90,7 @@
     .map((e, i) => ({ ...e, i, d: new Date(e.date + "T00:00:00"), group: groupOf[e.badge] || "other" }))
     .filter((e) => e.d >= today)
     .sort((a, b) => a.d - b.d || a.i - b.i);
+  const evId = (e) => "e-" + e.date + "-" + String(e.title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
   const monthDay = (d) => d.toLocaleString("en-US", { month: "short", day: "numeric" });
   const weekday = (d) => d.toLocaleString("en-US", { weekday: "long" });
 
@@ -111,8 +112,8 @@
         : shows.length
           ? shows.map((e) => `<p class="day-title">${esc(e.title)}</p><p>${esc(plain(e.time))}</p>`).join("")
           : `<p class="day-title">Fire pit at sunset</p><p>${esc(hoursText(d))}</p>`;
-      const link = shows[0] && safeUrl(shows[0].link);
-      cards.push(`<a class="day${n === 0 ? " is-today" : ""}${closure ? " is-closed" : ""}" href="${link ? esc(link) : "events.html"}" ${link ? 'target="_blank" rel="noopener"' : ""}>
+      const href = shows[0] ? "events.html#" + evId(shows[0]) : "events.html";
+      cards.push(`<a class="day${n === 0 ? " is-today" : ""}${closure ? " is-closed" : ""}" href="${esc(href)}">
         <span class="day-name">${label}</span><span class="day-date">${monthDay(d)}</span>${body}</a>`);
     }
     week.style.setProperty("--n", cards.length || 1);
@@ -380,7 +381,7 @@
         ${dateBox(e)}
         <div class="event-body"><h3>${esc(e.title)}</h3><p>${esc(e.text)}</p></div>
       </article>` : `
-      <article class="event${e.image ? " has-img" : ""}">
+      <article class="event is-open-able${e.image ? " has-img" : ""}" id="${esc(evId(e))}" data-open="${e.i}">
         ${e.image ? `<img class="event-img" src="${esc(e.image)}" alt="${esc(e.imageAlt || `${e.title}${e.badge ? `, ${e.badge.toLowerCase()}` : ""} at Cocoa Vino wine bar in Capitola Village`)}" loading="lazy">` : ""}
         ${dateBox(e)}
         <div class="event-body">
@@ -391,6 +392,7 @@
         </div>
         <div class="event-actions">
           ${e.soldOut ? `<span class="sold-out">Sold out</span>` : safeUrl(e.link) ? `<a class="btn btn-small" href="${esc(e.link)}" target="_blank" rel="noopener">Tickets & RSVP</a>` : ""}
+          <button class="more-btn" type="button" data-open="${e.i}" aria-label="More about ${esc(e.title)}">More details</button>
           <button class="cal-btn" type="button" data-cal="${e.i}" aria-label="Add ${esc(e.title)} to your calendar">Add to calendar</button>
         </div>
       </article>`;
@@ -408,6 +410,64 @@
     });
     render();
 
+    // Event details: a pop-up with the whole photo or flyer, the date, the full description
+    // and the buttons. Each event has its own address (events.html#e-...) to share.
+    const fullDate = (d) => d.toLocaleString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    let dlg = null;
+    const openEvent = (i) => {
+      const e = upcoming.find((x) => x.i === +i);
+      if (!e || e.group === "closed") return;
+      if (!dlg) {
+        dlg = document.createElement("dialog");
+        dlg.className = "event-dialog";
+        document.body.appendChild(dlg);
+        dlg.addEventListener("click", (ev) => {
+          if (ev.target === dlg || ev.target.closest(".dlg-close")) dlg.close();
+          const share = ev.target.closest(".share-btn");
+          if (share) {
+            const url = location.origin + location.pathname + "#" + share.dataset.id;
+            if (navigator.share) navigator.share({ title: share.dataset.title + " at Cocoa Vino", url }).catch(() => {});
+            else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { share.textContent = "Link copied"; }).catch(() => {});
+          }
+        });
+        dlg.addEventListener("close", () => { if (location.hash) history.replaceState(null, "", location.pathname + location.search); });
+      }
+      const alt = e.imageAlt || `${e.title}${e.badge ? `, ${e.badge.toLowerCase()}` : ""} at Cocoa Vino wine bar in Capitola Village`;
+      dlg.setAttribute("aria-label", e.title);
+      dlg.innerHTML = `
+        <div class="dlg-card">
+          <button class="dlg-close" type="button" aria-label="Close">&times;</button>
+          ${e.image ? `<img class="dlg-img" src="${esc(e.image)}" alt="${esc(alt)}">` : ""}
+          <div class="dlg-body">
+            ${e.badge ? `<span class="badge">${esc(e.badge)}</span>` : ""}
+            <h2>${esc(e.title)}</h2>
+            <p class="when">${+e.d === +today ? "Tonight" : esc(fullDate(e.d))} · ${esc(plain(e.time))}</p>
+            <p>${esc(plain(e.text))}</p>
+            <p class="dlg-where">Cocoa Vino, 312 Capitola Ave, Capitola Village</p>
+            <div class="dlg-actions">
+              ${e.soldOut ? `<span class="sold-out">Sold out</span>` : safeUrl(e.link) ? `<a class="btn btn-small" href="${esc(e.link)}" target="_blank" rel="noopener">Tickets & RSVP</a>` : ""}
+              <button class="cal-btn" type="button" data-cal="${e.i}">Add to calendar</button>
+              <button class="cal-btn share-btn" type="button" data-id="${esc(evId(e))}" data-title="${esc(e.title)}">Share</button>
+            </div>
+          </div>
+        </div>`;
+      history.replaceState(null, "", "#" + evId(e));
+      if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+    };
+    eventList.addEventListener("click", (ev) => {
+      if (ev.target.closest("a, .cal-btn")) return; // links and Add to calendar keep their own job
+      const card = ev.target.closest("[data-open]");
+      if (card) openEvent(card.dataset.open);
+    });
+    // Arriving from a link (home page "This week", or a shared link): open that event
+    const fromHash = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const e = id && upcoming.find((x) => evId(x) === id);
+      if (e) { const el = document.getElementById(id); if (el) el.scrollIntoView({ block: "center" }); openEvent(e.i); }
+    };
+    fromHash();
+    addEventListener("hashchange", fromHash);
+
     // "Add to calendar": downloads a .ics file for Apple, Google or Outlook
     const parseTime = (t) => {
       const m = /(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i.exec(t || "");
@@ -417,7 +477,7 @@
     };
     const stamp = (date, [h, m]) => date.replace(/-/g, "") + "T" + String(h).padStart(2, "0") + String(m).padStart(2, "0") + "00";
     const icsText = (s) => String(s).replace(/[\\;,]/g, (c) => "\\" + c).replace(/\n/g, "\\n");
-    eventList.addEventListener("click", (ev) => {
+    document.addEventListener("click", (ev) => {
       const b = ev.target.closest("[data-cal]");
       if (!b) return;
       const e = S.events[+b.dataset.cal];
