@@ -398,7 +398,7 @@
           <p>${esc(plain(e.text))}</p>
         </div>
         <div class="event-actions">
-          ${safeUrl(e.link) ? `<a class="btn btn-small" href="${esc(e.link)}" target="_blank" rel="noopener">Tickets & RSVP</a>` : ""}
+          ${e.soldOut ? `<span class="sold-out">Sold out</span>` : safeUrl(e.link) ? `<a class="btn btn-small" href="${esc(e.link)}" target="_blank" rel="noopener">Tickets & RSVP</a>` : ""}
           <button class="cal-btn" type="button" data-cal="${e.i}" aria-label="Add ${esc(e.title)} to your calendar">Add to calendar</button>
         </div>
       </article>`;
