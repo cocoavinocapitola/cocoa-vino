@@ -68,10 +68,9 @@ window.SITE = {
     quote: "Over 100 wines by the glass.",
     source: "Rated Three Glass, the Coravin Guide's top rating, 2026",
     url: "https://guide.coravin.com/products/cocoa-vino",
-    // The official Coravin Guide badge. Save the file Coravin sent as images/coravin-badge.png.
-    // Until it exists, the card shows without it.
-    badge: "images/coravin-badge.png",
-    badgeAlt: "The Coravin Guide Three Glass badge",
+    // Round seal at the top of the card (drawn by the site). Change the year here each year.
+    seal: { top: "The Coravin Guide", bottom: "Three Glass 2026" },
+    sealAlt: "The Coravin Guide Three Glass badge, 2026",
     linkText: "See our Coravin Guide listing",
     listLine: null, // e.g. { before: 'One of 35 "three glass" wine bars worldwide on the ', link: "Coravin Guide's 2025 list", after: ".", url: "https://guide.coravin.com/blogs/wine-destinations/three-glass-rated-wine-venues-worldwide" }
   },

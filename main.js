@@ -138,31 +138,23 @@
     }).catch(() => { const s = $("#reserve-pours"); if (s) s.hidden = true; });
   }
 
-  // Home: press card, from S.press
+  // Home: press card, from S.press. The round seal is drawn in the site's own style.
+  const sealHtml = (p) => {
+    const glass = '<svg viewBox="0 0 24 40" aria-hidden="true"><path d="M4 2h16v10a8 8 0 0 1-16 0z" fill="currentColor"/><path d="M12 20v14M6 38h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>';
+    return `<span class="press-seal" role="img" aria-label="${esc(p.sealAlt || "")}"><span class="seal-top">${esc(p.seal.top)}</span><span class="seal-glasses">${glass}${glass}${glass}</span><span class="seal-bottom">${esc(p.seal.bottom)}</span></span>`;
+  };
   const press = $("#press-card");
   if (press && S.press) {
     const p = S.press, u = safeUrl(p.url), l = p.listLine, lu = l && safeUrl(l.url);
     press.innerHTML = `
       <a class="press-main" href="${esc(u || "#")}" target="_blank" rel="noopener">
-        ${p.badge ? `<img class="press-badge" src="${esc(p.badge)}" alt="${esc(p.badgeAlt || "")}" width="160" height="160">` : ""}
+        ${p.seal ? sealHtml(p) : ""}
         <p class="press-quote">${esc(p.quote)}</p>
         <p class="press-source">${esc(p.source)}</p>
         ${p.linkText && u ? `<span class="press-link">${esc(p.linkText)}</span>` : ""}
       </a>${l ? `
       <p class="press-list">${esc(l.before)}${lu ? `<a href="${esc(lu)}" target="_blank" rel="noopener">${esc(l.link)}</a>` : esc(l.link)}${esc(l.after || "")}</p>` : ""}`;
   }
-
-  // Until the official badge file exists, show a badge drawn in the site's own style
-  const badge = $(".press-badge");
-  if (badge) badge.addEventListener("error", () => {
-    const glass = '<svg viewBox="0 0 24 40" aria-hidden="true"><path d="M4 2h16v10a8 8 0 0 1-16 0z" fill="currentColor"/><path d="M12 20v14M6 38h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>';
-    const d = document.createElement("span");
-    d.className = "press-seal";
-    d.setAttribute("role", "img");
-    d.setAttribute("aria-label", badge.alt);
-    d.innerHTML = `<span class="seal-top">The Coravin Guide</span><span class="seal-glasses">${glass}${glass}${glass}</span><span class="seal-bottom">Three Glass 2026</span>`;
-    badge.replaceWith(d);
-  }, { once: true });
 
   // Home: "Ask Rodney" section, from S.rodney. Until images/rodney.jpg exists,
   // fall back to the bar photo so the page never shows a broken image.
