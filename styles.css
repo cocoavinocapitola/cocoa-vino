@@ -458,6 +458,7 @@ p { margin: 0 0 1em; }
 .glass-band { padding-top: 3.5rem; padding-bottom: 3.5rem; }
 .glass-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center; }
 .glass-how p { font-size: 1.12rem; margin: 0; }
+.glass-how p + p { margin-top: .8rem; }
 .glass-find label { display: block; font: 500 1rem var(--caps); letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin-bottom: .5rem; }
 .glass-find input { width: 100%; padding: .9em 1.1em; font: 1.05rem var(--sans); border: 1.5px solid #d8cbbb; border-radius: 2px; background: #fff; color: var(--ink); }
 .glass-find input:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(201, 163, 92, .25); }
