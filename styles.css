@@ -459,6 +459,9 @@ p { margin: 0 0 1em; }
 .glass-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center; }
 .glass-how p { font-size: 1.12rem; margin: 0; }
 .glass-how p + p { margin-top: .8rem; }
+/* The wine list headline: bigger and bolder, with the gold bar used under other titles */
+.glass-how h2 { font-size: clamp(2.3rem, 4.4vw, 3.3rem); font-weight: 600; margin-bottom: 1.1rem; text-wrap: balance; }
+.glass-how h2::after { content: ""; display: block; width: 64px; height: 3px; margin: 1.1rem 0 0; background: linear-gradient(90deg, var(--gold), var(--gold-2)); }
 .glass-find label { display: block; font: 500 1rem var(--caps); letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin-bottom: .5rem; }
 .glass-find input { width: 100%; padding: .9em 1.1em; font: 1.05rem var(--sans); border: 1.5px solid #d8cbbb; border-radius: 2px; background: #fff; color: var(--ink); }
 .glass-find input:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(201, 163, 92, .25); }
