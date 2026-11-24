@@ -346,7 +346,8 @@ p { margin: 0 0 1em; }
   .day .day-title { margin-top: 0; }
   .rhythm { grid-template-columns: 1fr; }
   .event, .event.has-img { grid-template-columns: auto 1fr; }
-  .event-img { grid-column: 1 / -1; width: 100%; aspect-ratio: 16/9; }
+  /* Phones: show the whole photo or flyer at its own shape (no cropping), capped so a tall flyer never fills the screen */
+  .event-img { grid-column: 1 / -1; width: 100%; height: auto; aspect-ratio: auto; max-height: 70vh; object-fit: contain; background: #070b17; }
   .event .event-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
   .signup { flex-direction: column; }
   .event-form .row { grid-template-columns: 1fr; }
