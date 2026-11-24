@@ -1,0 +1,14 @@
+# Old Wix addresses -> the new pages (so old links and Google results still work)
+/events                              /events.html          301
+/event-details-registration/*        /events.html          301
+/event-details/*                     /events.html          301
+/menu                                /menu.html            301
+/wine-menu                           /menu.html            301
+/food-menu                           /menu.html#bites      301
+/contact                             /contact.html         301
+/contact-us                          /contact.html         301
+/about                               /visit.html           301
+/visit                               /visit.html           301
+/private-events                      /private-events.html  301
+/reservations                        https://toast.app/r/coco-vino-312-capitola-avenue  302
+/book-online                         https://toast.app/r/coco-vino-312-capitola-avenue  302

@@ -4,25 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self' https:; form-action 'self' https:; base-uri 'self'; object-src 'none'">
-  <!-- PREVIEW: keep out of search engines until launch on cocoavinocapitola.com (see README) -->
-  <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#0a0f1f">
   <title>Contact | Cocoa Vino, Capitola Village</title>
+  <link rel="canonical" href="https://www.cocoavinocapitola.com/contact.html">
   <meta name="description" content="Call Cocoa Vino at (831) 854-2777, visit 312 Capitola Ave in Capitola Village, see our hours, or send a note. Musicians, teachers and event hosts welcome.">
   <meta property="og:title" content="Contact | Cocoa Vino, Capitola Village">
   <meta property="og:description" content="Call, visit or send a note. Musicians, teachers and event hosts welcome.">
-  <meta property="og:image" content="https://kendahansen.github.io/cocoa-vino/images/share.jpg">
+  <meta property="og:image" content="https://www.cocoavinocapitola.com/images/share.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The gilded Cocoa Vino sign above a navy velvet banquette with blue and gold pillows">
-  <meta name="twitter:image" content="https://kendahansen.github.io/cocoa-vino/images/share.jpg">
+  <meta name="twitter:image" content="https://www.cocoavinocapitola.com/images/share.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261126e">
+  <link rel="stylesheet" href="styles.css?v=20261126f">
 </head>
 <body data-page="contact">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -68,7 +67,8 @@
       <p>Holiday closings and private events show up on <a href="events.html">Events</a>.</p>
     </div>
 
-    <form class="event-form" id="contact-form" novalidate>
+    <form class="event-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company" novalidate>
+      <input type="hidden" name="form-name" value="contact">
       <h2>Send a note</h2>
       <label>What's this about?
         <select name="topic" id="contact-topic">
@@ -119,7 +119,7 @@
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261126e"></script>
-<script src="main.js?v=20261126e"></script>
+<script src="content.js?v=20261126f"></script>
+<script src="main.js?v=20261126f"></script>
 </body>
 </html>

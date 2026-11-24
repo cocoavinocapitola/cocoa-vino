@@ -1,3 +1,4 @@
-# PREVIEW SITE: blocked from search engines until launch on cocoavinocapitola.com
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://www.cocoavinocapitola.com/sitemap.xml

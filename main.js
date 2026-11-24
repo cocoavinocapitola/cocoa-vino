@@ -495,6 +495,15 @@
 
   // ---------- Forms ----------
   const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  // Send a form: "netlify" posts to Netlify Forms on this site; anything else is a form service URL
+  const sendForm = async (action, f) => {
+    if (action === "netlify") {
+      const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(f)).toString() });
+      if (!res.ok) throw new Error("form " + res.status);
+    } else {
+      await fetch(action, { method: "POST", body: new FormData(f), mode: "no-cors" });
+    }
+  };
   const say = (el, text, ok) => { el.textContent = text; el.className = "form-msg " + (ok ? "ok" : "error"); };
 
   const signup = $("#signup");
@@ -527,7 +536,7 @@
       return say(msg, tel ? `Thanks, ${f.name.value.trim()}. Online requests aren't connected yet, so please call ${S.phone} to book your date.` : "Online requests aren't connected yet. Please stop by the bar to book.", true);
     const btn = f.querySelector("button"); btn.disabled = true;
     try {
-      await fetch(S.privateEventsFormAction, { method: "POST", body: new FormData(f), mode: "no-cors" });
+      await sendForm(S.privateEventsFormAction, f);
       say(msg, "Request sent. We'll be in touch to confirm your date.", true);
       f.reset();
     } catch { say(msg, "That didn't go through. Please try again or give us a call."); }
@@ -552,7 +561,7 @@
         return say(msg, tel ? `Thanks, ${f.name.value.trim()}. Our online form isn't connected yet, so please call ${S.phone}.` : "Our online form isn't connected yet. Please stop by the bar.", true);
       const btn = f.querySelector("button"); btn.disabled = true;
       try {
-        await fetch(S.contactFormAction, { method: "POST", body: new FormData(f), mode: "no-cors" });
+        await sendForm(S.contactFormAction, f);
         say(msg, "Thanks. Your note is on its way and we'll get back to you soon.", true);
         f.reset(); showExtras();
       } catch { say(msg, "That didn't go through. Please try again or give us a call."); }

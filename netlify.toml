@@ -1,0 +1,4 @@
+# Netlify: plain files, nothing to build. Publish the repo as it is.
+[build]
+  publish = "."
+  command = ""

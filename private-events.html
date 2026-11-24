@@ -4,25 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self' https:; form-action 'self' https:; base-uri 'self'; object-src 'none'">
-  <!-- PREVIEW: keep out of search engines until launch on cocoavinocapitola.com (see README) -->
-  <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#0a0f1f">
   <title>Private Events | Cocoa Vino, Capitola Village</title>
+  <link rel="canonical" href="https://www.cocoavinocapitola.com/private-events.html">
   <meta name="description" content="Book Cocoa Vino or the fire pit patio for birthdays, rehearsal dinners, team nights and full buyouts in Capitola Village.">
   <meta property="og:title" content="Private Events | Cocoa Vino, Capitola Village">
   <meta property="og:description" content="Book Cocoa Vino or the fire pit patio for birthdays, rehearsal dinners, team nights and full buyouts in Capitola Village.">
-  <meta property="og:image" content="https://kendahansen.github.io/cocoa-vino/images/share.jpg">
+  <meta property="og:image" content="https://www.cocoavinocapitola.com/images/share.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The gilded Cocoa Vino sign above a navy velvet banquette with blue and gold pillows">
-  <meta name="twitter:image" content="https://kendahansen.github.io/cocoa-vino/images/share.jpg">
+  <meta name="twitter:image" content="https://www.cocoavinocapitola.com/images/share.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="images/monogram.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/BodoniModa.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=20261126e">
+  <link rel="stylesheet" href="styles.css?v=20261126f">
 </head>
 <body data-page="private-events">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -64,7 +63,8 @@
       <p>Prefer to talk? <a data-phone data-phone-text hidden></a></p>
       <img class="pe-photo" src="images/patio-table.jpg" alt="The Cocoa Vino patio in the golden hour, with the fire pit and benches" loading="lazy">
     </div>
-    <form class="event-form" id="event-form" novalidate>
+    <form class="event-form" id="event-form" name="private-event-request" method="POST" data-netlify="true" netlify-honeypot="company" novalidate>
+      <input type="hidden" name="form-name" value="private-event-request">
       <h2>Request a date</h2>
       <label>Your name<input name="name" required autocomplete="name" maxlength="100"></label>
       <div class="row">
@@ -113,7 +113,7 @@
   <p class="fine">You must be 21 or older to buy or drink alcohol. © <span id="year"></span> Cocoa Vino, Capitola</p>
 </footer>
 
-<script src="content.js?v=20261126e"></script>
-<script src="main.js?v=20261126e"></script>
+<script src="content.js?v=20261126f"></script>
+<script src="main.js?v=20261126f"></script>
 </body>
 </html>
